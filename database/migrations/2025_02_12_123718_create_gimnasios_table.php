@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('gimnasios', function (Blueprint $table) {
-            $table->id('id'); // Clave primaria 'id'
+            $table->id('id');
             $table->string('nombre');
             $table->timestamps();
         });

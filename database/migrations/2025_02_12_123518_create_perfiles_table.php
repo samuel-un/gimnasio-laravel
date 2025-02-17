@@ -10,7 +10,6 @@ return new class extends Migration
     {
         Schema::create('perfiles', function (Blueprint $table) {
             $table->id('id_perfil');
-            // Al usar foreignId, se crea un unsignedBigInteger y se asume que la columna referenciada es 'id'
             $table->foreignId('id_usuario')->constrained('usuarios')->onDelete('cascade');
             $table->enum('plan_membresia', ['comfort', 'premium', 'ultimate']);
             $table->date('fecha_inicio_membresia');
