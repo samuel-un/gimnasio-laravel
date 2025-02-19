@@ -20,7 +20,7 @@ class User extends Authenticatable
         'nombre', 
         'apellidos',
         'email',
-        'contraseña',
+        'password',
         'telefono',
     ];
 
@@ -30,7 +30,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'contraseña',
+        'password',
         'remember_token',
     ];
 
@@ -43,7 +43,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'contraseña' => 'hashed',
+            'password' => 'hashed',
         ];
     }
 }

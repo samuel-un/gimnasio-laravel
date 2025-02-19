@@ -19,7 +19,7 @@ class UserController extends Controller
             'nombre' => 'required|string|max:100',
             'apellidos' => 'required|string|max:100',
             'email' => 'required|email|unique:usuarios,email',
-            'contraseña' => 'required|string|min:8',
+            'password' => 'required|string|min:8',
             'telefono' => 'nullable|string|min:9|max:9',  // Teléfono es opcional
         ]);
 
@@ -28,7 +28,7 @@ class UserController extends Controller
             'nombre' => $validated['nombre'],
             'apellidos' => $validated['apellidos'],
             'email' => $validated['email'],
-            'contraseña' => bcrypt($validated['contraseña']), // Encriptar la contraseña
+            'password' => bcrypt($validated['password']), // Encriptar la contraseña
             'telefono' => $validated['telefono'] ?? null, // Si no se proporciona teléfono, se dejará como null
         ]);
 

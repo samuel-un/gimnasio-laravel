@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellidos');
             $table->string('email')->unique();
-            $table->string('contraseña');
+            $table->string('password');
             $table->string('telefono')->nullable();
             $table->timestamps();
         });
