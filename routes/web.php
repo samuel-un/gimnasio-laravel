@@ -18,3 +18,9 @@ Route::post('/user-creator', [UserController::class, 'store']);
 // Rutas para el login del usuario
 Route::get('/user-access', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/user-access', [AuthController::class, 'login'])->name('login.post');
+
+// Mostrar el formulario de inicio de sesión
+Route::get('/user-access', [AuthController::class, 'showLoginForm'])->name('login.form');
+
+// Procesar el formulario de inicio de sesión
+Route::post('/user-access', [AuthController::class, 'login'])->name('login.post');

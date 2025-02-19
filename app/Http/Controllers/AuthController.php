@@ -7,29 +7,28 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    // Muestra el formulario de login
     public function showLoginForm()
     {
-        return view('auth.login'); // Vista de login (ubicada en resources/views/auth/login.blade.php)
+        return view('auth.login');
     }
 
-    // Procesa el formulario de login
     public function login(Request $request)
     {
-        // Validar los datos del formulario
+        // Validación de los campos
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required', // Validar el campo 'password' enviado por el formulario
+            'password' => 'required',
         ]);
 
-        // Intentar autenticar al usuario utilizando el campo 'contraseña' en lugar de 'password'
-        if (Auth::attempt(['email' => $credentials['email'], 'contraseña' => $credentials['password']])) {
-            return redirect()->intended('/'); // Redirige al dashboard o página principal
+        // Intentar autenticar al usuario
+        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
+            // Si es exitoso, mostrar mensaje de éxito
+            return back()->with('success', '¡Inicio de sesión exitoso!');
+        } else {
+            // Si no es exitoso, mostrar mensaje de error
+            return back()->withErrors([
+                'error' => 'Las credenciales no coinciden con nuestros registros.',
+            ])->withInput();
         }
-
-        // En caso de error, redirigir con mensaje de error
-        return back()->withErrors([
-            'email' => 'Las credenciales no coinciden con nuestros registros.',
-        ])->onlyInput('email');
     }
 }
