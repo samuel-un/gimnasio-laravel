@@ -3,61 +3,119 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Landing Page - Barra de Navegación</title>
-	<!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-	<!-- (Opcional) Bootstrap Icons para iconos de usuario, etc. -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Crear nueva cuenta</title>
+	<!-- Usamos la misma versión de Bootstrap para mantener consistencia -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+	/* Fondo y overlay similar al login */
+	body {
+		background: url('https://res.cloudinary.com/dqcaqvplr/image/upload/v1740396560/rdeprhfbimjhxbqg9xih.png') no-repeat center center fixed;
+		background-size: cover;
+		position: relative;
+	}
+
+	body::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.4);
+		z-index: -1;
+	}
+
+	header {
+		position: relative;
+	}
+
+	/* Logo en la esquina superior izquierda */
+	.logo {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		width: 70px;
+		height: 70px;
+	}
+
+	/* Estilo del título */
+	h1 {
+		font-family: monospace;
+		font-size: 2.5rem;
+		font-weight: bold;
+	}
+
+	/* Contenedor central del formulario */
+	.signup-container {
+		background-color: #FFC107;
+		padding: 2rem;
+		border-radius: 15px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+		max-width: 360px;
+		width: 100%;
+	}
+	</style>
 </head>
 
-<body>
+<body class="min-vh-100 d-flex flex-column">
+	<!-- Header similar al login -->
+	<header class="text-center py-3 bg-warning">
+		<img src="https://res.cloudinary.com/dqcaqvplr/image/upload/v1740052973/xzz7r6cldz70lzphtg5p.png" alt="Logo"
+			class="logo">
+		<h1>CREAR NUEVA CUENTA</h1>
+	</header>
 
-	<!-- Barra de navegación -->
-	<nav class="navbar navbar-expand-lg" style="background-color: #000;">
-		<div class="container">
-			<!-- Marca / Logo -->
-			<a class="navbar-brand text-warning fw-bold" href="#">
-				<!-- Opcional: puedes colocar aquí tu logo con <img> -->
-				<!-- <img src="ruta-a-tu-logo.png" alt="Logo" width="40" class="me-2"> -->
-				VAS A LLORAR GYM
-			</a>
+	<!-- Contenedor centralizado -->
+	<main class="container d-flex justify-content-center align-items-center flex-grow-1">
+		<section class="signup-container">
+			<!-- Mensaje de éxito -->
+			@if (session('success'))
+			<div class="alert alert-success py-2 text-center" role="alert">
+				{{ session('success') }}
+			</div>
+			@endif
 
-			<!-- Botón "hamburguesa" para móviles -->
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
-				<span class="navbar-toggler-icon" style="color: #ffc107;"></span>
-			</button>
-
-			<!-- Enlaces del menú -->
-			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-				<ul class="navbar-nav mb-2 mb-lg-0">
-					<li class="nav-item">
-						<a class="nav-link text-light" href="#">Precios</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link text-light" href="#">Conócenos</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link text-light" href="#">Busca tu club</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link text-light" href="#">Área clientes</a>
-					</li>
-					<!-- Ejemplo de icono de usuario si lo necesitas -->
-					<!-- 
-        <li class="nav-item">
-          <a class="nav-link text-light" href="#">
-            <i class="bi bi-person"></i>
-          </a>
-        </li>
-        -->
+			<!-- Mensajes de error de validación -->
+			@if ($errors->any())
+			<div class="alert alert-danger py-2" role="alert">
+				<ul class="mb-0 ps-3">
+					@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+					@endforeach
 				</ul>
 			</div>
-		</div>
-	</nav>
+			@endif
 
+			<!-- Formulario para crear usuario con separación uniforme entre campos -->
+			<form action="{{ route('user-creator') }}" method="POST" class="d-grid gap-4">
+				@csrf
+
+				<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required
+					value="{{ old('nombre') }}">
+
+				<input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" required
+					value="{{ old('apellidos') }}">
+
+				<input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico"
+					required value="{{ old('email') }}">
+
+				<input type="password" class="form-control" id="password" name="password" placeholder="Contraseña"
+					required value="{{ old('password') }}">
+
+				<input type="text" class="form-control" id="telefono" name="telefono"
+					placeholder="Número de teléfono (opcional)" value="{{ old('telefono') }}">
+
+				<button type="submit" class="btn btn-dark">Crear cuenta</button>
+			</form>
+		</section>
+	</main>
+
+	<!-- Validaciones JS para el formulario -->
+	<script src="{{ asset('js/user-creator.js') }}"></script>
 	<!-- Bootstrap JS -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

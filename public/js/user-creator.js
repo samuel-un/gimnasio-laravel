@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector("form").addEventListener("submit", function (event) {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function (event) {
         let isValid = true;
+        let messages = [];
 
         // Obtener los valores de los campos del formulario
         const name = document.getElementById("nombre").value.trim();
@@ -11,41 +14,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Validación del nombre
         if (!name) {
-            alert("El campo Nombre es obligatorio.");
             isValid = false;
+            messages.push("El campo Nombre es obligatorio.");
         }
 
         // Validación de los apellidos
         if (!surname) {
-            alert("El campo Apellidos es obligatorio.");
             isValid = false;
+            messages.push("El campo Apellidos es obligatorio.");
         }
 
         // Validación del correo electrónico
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            alert("Introduce un correo electrónico válido.");
+        if (!email || !validateEmail(email)) {
             isValid = false;
+            messages.push("Introduce un correo electrónico válido.");
         }
 
-        // Validación de la contraseña
+        // Validación de la contraseña (mínimo 8 caracteres)
         if (password.length < 8) {
-            alert("La password debe tener al menos 8 caracteres.");
             isValid = false;
+            messages.push("La contraseña debe tener al menos 8 caracteres.");
         }
 
-        // Validación del teléfono opcional
-        if (phone.length > 0) {
-            if (phone.length < 9 || phone.length > 9) {
-                alert(
-                    "El número de teléfono debe tener 9 dígitos (Número ES)."
-                );
-                isValid = false;
-            }
+        // Validación del teléfono opcional (exactamente 9 dígitos)
+        if (phone.length > 0 && phone.length !== 9) {
+            isValid = false;
+            messages.push(
+                "El número de teléfono debe tener 9 dígitos (Número ES)."
+            );
         }
 
-        // Si hay errores, evitar el envío del formulario
+        // Si hay errores, evitar el envío y mostrar alertas
         if (!isValid) {
             event.preventDefault();
+            showAlert(messages);
         }
     });
+
+    // Función para validar el formato del correo electrónico
+    function validateEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
+
+    // Función para mostrar alertas en la parte superior del formulario
+    function showAlert(messages) {
+        const existingAlert = document.querySelector(".alert");
+        if (existingAlert) {
+            existingAlert.remove();
+        }
+
+        const alertDiv = document.createElement("div");
+        alertDiv.className = "alert alert-danger py-2 text-center";
+        alertDiv.role = "alert";
+        alertDiv.innerHTML = messages.map((msg) => `<p>${msg}</p>`).join("");
+
+        form.parentElement.insertBefore(alertDiv, form);
+    }
 });
