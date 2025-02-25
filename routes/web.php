@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 
 // Ruta principal
 Route::get('/', function () {
-    return view('welcome'); // Página principal o landing page
+    return view('landing');
 });
 
 // Ruta para mostrar la vista de creación de usuario

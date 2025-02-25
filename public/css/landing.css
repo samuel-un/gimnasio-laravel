@@ -1,0 +1,106 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* TIPOGRAFÍA Y CUERPO */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    height: 100vh;
+}
+
+/* ENCABEZADO */
+header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+/* BARRA DE NAVEGACIÓN */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    padding: 0 40px;
+    background-color: rgba(46, 46, 46, 0.9);
+}
+
+/* Secciones del nav */
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+/* LOGO */
+.gym-logo {
+    height: 60px;
+    width: auto;
+}
+
+/* MENÚ DE NAVEGACIÓN */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin-right: 20px;
+}
+
+.nav-menu li {
+    margin: 0 15px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #ffc300;
+    font-size: 15px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #d4ac0d;
+}
+
+/* Enlace de acceso */
+.client-access {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffc300;
+}
+
+.client-access span {
+    margin-right: 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* ÍCONO DE PERFIL */
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+/* SECCIÓN PRINCIPAL (HERO) */
+.hero {
+    width: 100%;
+    height: 100vh;
+    background: url("https://res.cloudinary.com/dgbngcvkl/image/upload/v1740490222/Landing-page%20GYM/srktpbgliwmy9mmjthdv.png")
+        center center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin-top: 0;
+    position: relative;
+}
