@@ -1,106 +1,391 @@
 /* Reset básico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* TIPOGRAFÍA Y CUERPO */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  /* Si quieres que cada sección ocupe la pantalla completa, no uses height: 100vh en el body, sino en cada sección. */
 }
 
 /* ENCABEZADO */
 header {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
 
 /* BARRA DE NAVEGACIÓN */
 nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100px;
-    padding: 0 40px;
-    background-color: rgba(46, 46, 46, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0 40px;
+  background-color: rgba(46, 46, 46, 0.9);
 }
 
 /* Secciones del nav */
 .nav-left {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .nav-right {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 /* LOGO */
 .gym-logo {
-    height: 60px;
-    width: auto;
+  height: 60px;
+  width: auto;
 }
 
 /* MENÚ DE NAVEGACIÓN */
 .nav-menu {
-    display: flex;
-    list-style: none;
-    margin-right: 20px;
+  display: flex;
+  list-style: none;
+  margin-right: 20px;
 }
 
 .nav-menu li {
-    margin: 0 15px;
+  margin: 0 15px;
 }
 
 .nav-menu li a {
-    text-decoration: none;
-    color: #ffc300;
-    font-size: 15px;
-    font-weight: 600;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: #ffc300;
+  font-size: 15px;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 .nav-menu li a:hover {
-    color: #d4ac0d;
+  color: #d4ac0d;
 }
 
 /* Enlace de acceso */
 .client-access {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #ffc300;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #ffc300;
 }
 
 .client-access span {
-    margin-right: 10px;
-    font-size: 15px;
-    font-weight: 600;
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 /* ÍCONO DE PERFIL */
 .profile-icon {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
 }
 
 /* SECCIÓN PRINCIPAL (HERO) */
 .hero {
+  width: 100%;
+  height: 100vh;
+  background: url("https://res.cloudinary.com/dgbngcvkl/image/upload/v1740490222/Landing-page%20GYM/srktpbgliwmy9mmjthdv.png")
+    center center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Contenido dentro del Hero */
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  color: #ffc300;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.btn-cta {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #ffc300;
+  color: #121212;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.btn-cta:hover {
+  background-color: #d4ac0d;
+}
+
+/* SECCIÓN: POR QUÉ ELEGIR VAS A LLORAR GYM */
+.why-choose {
+  width: 100%;
+  padding: 80px 20px;
+  background-color: #121212; /* mismo color de fondo */
+  text-align: center;
+}
+
+.why-choose .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-choose h2 {
+  font-size: 36px;
+  color: #ffc300;
+  margin-bottom: 20px;
+}
+
+.why-choose p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 50px;
+}
+
+/* Features */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.feature {
+  max-width: 250px;
+  text-align: center;
+  position: relative;
+  padding-top: 60px; /* Espacio para la imagen y/o texto */
+  background-size: contain; /* Asegura que la imagen se vea completa */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center center; /* Centra la imagen */
+  height: 200px; /* Ajusta el tamaño según lo necesites */
+}
+
+.feature h3 {
+  margin: 20px 0 10px;
+  color: #ffc300;
+  font-size: 22px;
+}
+
+.feature p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* SECCIÓN: ENTRENADORES */
+.trainers {
+  width: 100%;
+  padding: 80px 20px;
+  background-color: #1f1f1f; /* un tono diferente para contrastar */
+  text-align: center;
+}
+
+.trainers .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.trainers h2 {
+  font-size: 36px;
+  color: #ffc300;
+  margin-bottom: 20px;
+}
+
+.trainers p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 50px;
+}
+
+/* Cards de entrenadores */
+.trainer-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.trainer-card {
+  background-color: #2e2e2e;
+  border-radius: 8px;
+  width: 280px;
+  padding: 20px;
+  text-align: center;
+}
+
+.trainer-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.trainer-card h3 {
+  font-size: 22px;
+  color: #ffc300;
+  margin-bottom: 10px;
+}
+
+.trainer-card p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* ------------------ Footer ------------------ */
+/* --------- Footer layout --------- */
+footer {
+  font-family: sans-serif;
+  background-image: url("https://res.cloudinary.com/dup51jxlj/image/upload/v1741564355/freepik__the-style-is-candid-image-photography-with-natural__64385_1_lv75rq.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+/* Contenedor genérico para cada barra o sección del footer */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* BARRA SUPERIOR (amarilla) */
+.top-bar {
+  background: #FFC300; /* O usa un gradient si lo prefieres */
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* Texto "SÍGUENOS EN" */
+.follow-us {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000; /* Texto negro */
+  margin-right: 20px;
+}
+
+/* Íconos de redes sociales en la barra superior */
+.social-icons a {
+  color: #000; /* Íconos en negro */
+  font-size: 24px;
+  margin: 0 10px;
+}
+
+/* SECCIÓN CENTRAL (3 columnas, fondo negro) */
+.middle-footer {
+ 
+  padding: 30px 0;
+  text-align: center;
+}
+
+/* Ajuste de columnas */
+.footer-section {
+  width: 30%;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 20px;
+  text-align: left;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #FFC300; /* Amarillo para resaltar */
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section li {
+  margin-bottom: 5px;
+}
+
+.footer-section a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* BARRA INFERIOR (amarilla) */
+.bottom-bar {
+  background: #FFC300;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* Texto "CREADO POR" */
+.created-by {
+  font-size: 18px;
+  color: #000;
+  margin-right: 20px;
+}
+
+/* Contenedor de todos los creadores */
+.creators {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: 20px;
+}
+
+/* Cada creador individual */
+.creator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Íconos en la barra inferior */
+.creator a {
+  color: #000; /* Íconos en negro */
+  font-size: 20px;
+}
+
+/* Nombre del creador */
+.creator span {
+  color: #000; /* Texto en negro */
+  font-size: 16px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer-section {
     width: 100%;
-    height: 100vh;
-    background: url("https://res.cloudinary.com/dgbngcvkl/image/upload/v1740490222/Landing-page%20GYM/srktpbgliwmy9mmjthdv.png")
-        center center no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    margin-top: 0;
-    position: relative;
+    margin-bottom: 20px;
+  }
+  .creators {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .follow-us {
+    display: block;
+    margin-bottom: 10px;
+  }
 }
