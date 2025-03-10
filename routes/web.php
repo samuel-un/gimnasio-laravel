@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SubscriptionController; // Usamos SubscriptionController en lugar de PriceController
 
 // Ruta principal
 Route::get('/', function () {
@@ -19,8 +20,6 @@ Route::post('/user-creator', [UserController::class, 'store']);
 Route::get('/user-access', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/user-access', [AuthController::class, 'login'])->name('login.post');
 
-// Mostrar el formulario de inicio de sesión
-Route::get('/user-access', [AuthController::class, 'showLoginForm'])->name('login.form');
-
-// Procesar el formulario de inicio de sesión
-Route::post('/user-access', [AuthController::class, 'login'])->name('login.post');
+// Cambiar las rutas de precios y planes a /price-view
+Route::get('/price-view', [SubscriptionController::class, 'index'])->name('price-view'); // Mostrar precios
+Route::post('/price-view', [SubscriptionController::class, 'store'])->name('price-view.store'); // Procesar suscripción
