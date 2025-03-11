@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SubscriptionController; // Usamos SubscriptionController en lugar de PriceController
+use App\Http\Controllers\UserManagementController;
+
 
 // Ruta principal
 Route::get('/', function () {
@@ -23,3 +25,14 @@ Route::post('/user-access', [AuthController::class, 'login'])->name('login.post'
 // Cambiar las rutas de precios y planes a /price-view
 Route::get('/price-view', [SubscriptionController::class, 'index'])->name('price-view'); // Mostrar precios
 Route::post('/price-view', [SubscriptionController::class, 'store'])->name('price-view.store'); // Procesar suscripción
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/user-management', [UserManagementController::class, 'index'])->name('user-management.index');
+    Route::put('/user-management', [UserManagementController::class, 'update'])->name('user-management.update');
+});
+
+
+
+
+
