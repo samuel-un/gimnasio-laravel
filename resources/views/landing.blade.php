@@ -21,7 +21,7 @@
       <div class="nav-right">
         <ul class="nav-menu">
           <li><a href="#precios">PRECIOS</a></li>
-          <li><a href="#conocenos">CONÓCENOS</a></li>
+          <li><a href="#por-que-elegir">CONÓCENOS</a></li>
           <li><a href="#busca-club">BUSCA TU CLUB</a></li>
         </ul>
         <a href="/user-access" class="client-access">
@@ -71,6 +71,8 @@
     </div>
   </section>
 
+  
+
   <!-- SECCIÓN: LOS MEJORES ENTRENADORES -->
   <section class="trainers" id="entrenadores">
     <div class="container">
@@ -110,6 +112,99 @@
     </div>
   </section>
 
+    
+ <!-- SECCIÓN: BUSCA TU CLUB -->
+ <section id="busca-club" class="gym-search">
+    <h2>Busca tu Club</h2>
+    <input type="text" id="busqueda" placeholder="Ingrese provincia">
+    <button onclick="buscar()">Buscar</button>
+  </section>
+
+  <!-- Contenedor para mostrar los resultados -->
+  <section class="search-results" id="resultados"></section>
+
+  <section id="mapa-container">
+  <h2>Ubicación del Gimnasio</h2>
+  <iframe 
+    id="mapa" 
+    width="100%" 
+    height="400" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</section>
+
+
+  <script>
+  async function buscar() {
+    const inputBusqueda = document.getElementById("busqueda").value.trim().toLowerCase();
+    const resultadosContainer = document.getElementById("resultados");
+    const mapaIframe = document.getElementById("mapa");
+    
+    resultadosContainer.innerHTML = ""; // Limpiar resultados previos
+
+    if (!inputBusqueda) {
+      resultadosContainer.innerHTML = "<p>Por favor, ingrese una provincia.</p>";
+      return;
+    }
+
+    try {
+      const response = await fetch("data/gimnasios.json");
+      if (!response.ok) {
+        console.error("Error al cargar el JSON. Código: ", response.status);
+        resultadosContainer.innerHTML = "<p>Error al cargar el archivo JSON.</p>";
+        return;
+      }
+
+      const gimnasios = await response.json();
+      const resultados = gimnasios.filter(gym =>
+        gym.provincia.toLowerCase().includes(inputBusqueda)
+      );
+
+      if (resultados.length === 0) {
+        resultadosContainer.innerHTML = "<p>No se encontraron gimnasios.</p>";
+        return;
+      }
+
+      resultados.forEach(gym => {
+        resultadosContainer.innerHTML += `
+          <div class="gym-item">
+            <h3>${gym.nombre}</h3>
+            <p><strong>Provincia:</strong> ${gym.provincia}</p>
+            <p><strong>Dirección:</strong> ${gym.direccion}</p>
+            <p><strong>Horario Lectivo:</strong> ${gym.horario_lectivo}</p>
+            <p><strong>Horario Festivo:</strong> ${gym.horario_festivo}</p>
+          </div>
+        `;
+      });
+
+      // Mostrar el primer gimnasio en el iframe de Google Maps
+      mostrarEnIframe(resultados[0]);
+
+    } catch (error) {
+      console.error("Error en la búsqueda:", error);
+      resultadosContainer.innerHTML = "<p>Error al procesar la búsqueda.</p>";
+    }
+  }
+
+  function mostrarEnIframe(gym) {
+    if (!gym.direccion) {
+      console.error("No hay dirección disponible para este gimnasio.");
+      return;
+    }
+
+    // Construir la URL de Google Maps con la dirección del gimnasio
+    const mapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(gym.direccion)}&output=embed`;
+
+    // Actualizar el iframe con la nueva URL
+    document.getElementById("mapa").src = mapsUrl;
+  }
+</script>
+
+
+  
   <!-- FOOTER -->
   <footer>
   <!-- BARRA SUPERIOR -->
@@ -121,7 +216,6 @@
       <!-- Íconos de redes sociales -->
       <div class="social-icons">
         <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
         <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
       </div>
@@ -166,28 +260,44 @@
       
       <!-- Contenedor de creadores -->
       <div class="creators">
-        <!-- Primer creador -->
-        <div class="creator">
-          <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <span>Israe A.B</span>
-        </div>
-        <!-- Segundo creador -->
-        <div class="creator">
-          <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <span>Nicolas B.C</span>
-        </div>
-        <!-- Tercer creador -->
-        <div class="creator">
-          <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <span>Samuel U.N</span>
-        </div>
-      </div>
+  <!-- Israel -->
+  <div class="creator">
+    <a href="https://github.com/Israelab01" target="_blank">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://linkedin.com/in/israel-abad-barrera" target="_blank">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <span>Israel Abad</span>
+  </div>
+
+  <!-- Samuel -->
+  <div class="creator">
+    <a href="https://github.com/samuel-un" target="_blank">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/samuel-un/" target="_blank">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <span>Samuel Utrilla</span>
+  </div>
+
+  <!-- Nicolás -->
+  <div class="creator">
+    <a href="https://github.com/blurry0507" target="_blank">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/nicolas-burgos-contreras-278b042b4" target="_blank">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <span>Nicolás Burgos</span>
+  </div>
+</div>
+
     </div>
   </div>
 </footer>
+
 
 
 </body>

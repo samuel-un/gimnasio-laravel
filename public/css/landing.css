@@ -389,3 +389,45 @@ footer {
     margin-bottom: 10px;
   }
 }
+
+.gym-search {
+  margin: 40px auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.gym-search input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.gym-search button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-left: 5px;
+  background-color: #ffc300;
+  border: none;
+  cursor: pointer;
+}
+
+.search-results {
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.gym-item {
+  background: #2e2e2e;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.gym-item h3 {
+  margin-bottom: 5px;
+  color: #ffc300;
+}
+
+.gym-item p {
+  margin: 2px 0;
+}
