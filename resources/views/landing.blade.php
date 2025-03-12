@@ -23,12 +23,21 @@
 					<li><a href="#por-que-elegir">CONÓCENOS</a></li>
 					<li><a href="#busca-club">BUSCA TU CLUB</a></li>
 				</ul>
+				@auth
+				<a href="/user-management" class="client-access">
+					<span>ÁREA CLIENTES</span>
+					<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741180217/cuenta_2_s4gs1a.png"
+						alt="Icono Perfil" class="profile-icon" />
+				</a>
+				@else
 				<a href="/user-access" class="client-access">
 					<span>ÁREA CLIENTES</span>
 					<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741180217/cuenta_2_s4gs1a.png"
 						alt="Icono Perfil" class="profile-icon" />
 				</a>
+				@endauth
 			</div>
+
 		</nav>
 	</header>
 
