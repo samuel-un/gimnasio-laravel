@@ -61,8 +61,10 @@
 <body class="min-vh-100 d-flex flex-column">
 	<!-- Header similar al login -->
 	<header class="text-center py-3 bg-warning">
-		<img src="https://res.cloudinary.com/dqcaqvplr/image/upload/v1740052973/xzz7r6cldz70lzphtg5p.png" alt="Logo"
-			class="logo">
+		<a href="/">
+			<img src="https://res.cloudinary.com/dqcaqvplr/image/upload/v1740052973/xzz7r6cldz70lzphtg5p.png" alt="Logo"
+				class="logo">
+		</a>
 		<h1>CREAR NUEVA CUENTA</h1>
 	</header>
 
