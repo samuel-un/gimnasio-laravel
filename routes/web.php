@@ -32,7 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/user-management', [UserManagementController::class, 'update'])->name('user-management.update');
 });
 
-
+Route::get('/user-management', [UserManagementController::class, 'index'])->name('user-management.index')->middleware('auth');
+Route::put('/user-management', [UserManagementController::class, 'update'])->name('user-management.update')->middleware('auth');
 
 
 

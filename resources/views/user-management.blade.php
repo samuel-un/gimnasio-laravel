@@ -33,22 +33,26 @@
 
         <!-- Contenido principal -->
         <main class="w-3/4 p-10 bg-gray-700 min-h-screen">
-        <section class="bg-gray-500 p-5 rounded lg:">
-    <h2 class="text-xl font-bold mb-3">Selecciona un gimnasio:</h2>
-    <div>
-        <select id="gimnasios" class="p-2 bg-gray-800 text-white rounded" onchange="actualizarGimnasio()">
-            <option value="">Selecciona un gimnasio</option>
-            @if(!empty($gimnasios))
-                @foreach($gimnasios as $gimnasio)
-                    <option value="{{ $gimnasio['nombre'] }}">{{ $gimnasio['nombre'] }}</option>
-                @endforeach
-            @else
-                <option value="">No hay gimnasios disponibles</option>
-            @endif
-        </select>
-    </div>
-    <p class="mt-3" id="gimnasio-seleccionado">🏋 Gimnasio seleccionado: <strong id="gimnasio">Ninguno</strong></p>
-</section>
+            <!-- Sección de Selección de Gimnasio -->
+            <section class="bg-gray-500 p-5 rounded-lg">
+                <h2 class="text-xl font-bold mb-3">Selecciona un gimnasio:</h2>
+                <div>
+                    <select id="gimnasios" class="p-2 bg-gray-800 text-white rounded" onchange="actualizarGimnasio()">
+                        <option value="">Selecciona un gimnasio</option>
+                        @if(!empty($gimnasios))
+                            @foreach($gimnasios as $gimnasio)
+                                <option value="{{ $gimnasio['nombre'] }}">{{ $gimnasio['nombre'] }}</option>
+                            @endforeach
+                        @else
+                            <option value="">No hay gimnasios disponibles</option>
+                        @endif
+                    </select>
+                </div>
+                <p class="mt-3" id="gimnasio-seleccionado">🏋 Gimnasio seleccionado: <strong id="gimnasio">Ninguno</strong></p>
+                <p class="mt-1" id="horario-lectivo">⏰ Horario lectivo: <span id="horario-lectivo-texto">No disponible</span></p>
+                <p class="mt-1" id="horario-festivo">⏰ Horario festivo: <span id="horario-festivo-texto">No disponible</span></p>
+                <p class="mt-2 text-sm" id="info-cierres">Nuestro gimnasio situado en la calle <strong id="direccion-gimnasio">No disponible</strong> estará cerrado en los siguientes días a lo largo del año: el 1 de enero (Año Nuevo), el 6 de enero (Reyes), el 19 de marzo (Día del Padre), el 1 de mayo (Día del Trabajo), el 15 de agosto (Asunción de la Virgen), el 12 de octubre (Fiesta Nacional), del 13 al 20 de abril (Semana Santa), el 1 de noviembre (Todos los Santos), el 6 de diciembre (Día de la Constitución), el 8 de diciembre (Inmaculada Concepción), el 25 de diciembre (Navidad) y el 31 de diciembre (Nochevieja).</p>
+            </section>
 
             <!-- Sección de Reservar Instalaciones -->
             <section class="bg-gray-500 p-5 rounded-lg mt-5">
@@ -138,13 +142,38 @@
 
     <!-- Scripts -->
     <script>
+        // Pasar los datos de gimnasios desde PHP a JavaScript
+        const gimnasios = @json($gimnasios ?? []);
+
         function actualizarGimnasio() {
             let select = document.getElementById("gimnasios");
-            let gimnasioSeleccionado = select.options[select.selectedIndex].text;
-            document.getElementById("gimnasio-seleccionado").innerText = gimnasioSeleccionado;
+            let nombreSeleccionado = select.value;
+            let gimnasio = gimnasios.find(g => g.nombre === nombreSeleccionado);
+
+            // Actualizar el nombre del gimnasio seleccionado
+            let textoGimnasio = gimnasio ? gimnasio.nombre : "Ninguno";
+            document.getElementById("gimnasio-seleccionado").innerText = `🏋 Gimnasio seleccionado: ${textoGimnasio}`;
+
+            // Actualizar los horarios del gimnasio seleccionado
+            let textoHorarioLectivo = gimnasio && gimnasio.horario_lectivo ? gimnasio.horario_lectivo : "No disponible";
+            let textoHorarioFestivo = gimnasio && gimnasio.horario_festivo ? gimnasio.horario_festivo : "No disponible";
+            document.getElementById("horario-lectivo").innerText = `⏰ Horario lectivo: ${textoHorarioLectivo}`;
+            document.getElementById("horario-festivo").innerText = `⏰ Horario festivo: ${textoHorarioFestivo}`;
+
+            // Actualizar la dirección en el texto de cierres
+            let textoDireccion = gimnasio && gimnasio.direccion ? gimnasio.direccion : "No disponible";
+            document.getElementById("direccion-gimnasio").innerText = textoDireccion;
         }
 
-        // Aquí puedes agregar más funciones JavaScript si las necesitas, como reservarHorario()
+        function reservarHorario(instalacionId, fechaId, horaId) {
+            let fecha = document.getElementById(fechaId).value;
+            let hora = document.getElementById(horaId).value;
+            if (fecha && hora) {
+                alert(`Reserva realizada para la instalación ${instalacionId} el ${fecha} a las ${hora}`);
+            } else {
+                alert("Por favor, selecciona una fecha y hora.");
+            }
+        }
     </script>
 </body>
 

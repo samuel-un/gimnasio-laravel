@@ -3,47 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class UserManagementController extends Controller
 {
-    /**
-     * Muestra el formulario con la información del usuario autenticado.
-     */
     public function index()
     {
-        $user = Auth::user(); // Obtener el usuario autenticado
-        return view('user-management', compact('user'));
+        $response = Http::get('https://gimnasios-g4coy481d-samuel-uns-projects.vercel.app/api/gimnasios');
+        $gimnasios = $response->successful() ? $response->json() : [];
+        $user = auth()->user();
+
+        return view('user-management', compact('gimnasios', 'user'));
     }
 
-    /**
-     * Actualiza la información del usuario en la base de datos.
-     */
     public function update(Request $request)
     {
-        $user = Auth::user(); // Obtener el usuario autenticado
+        $user = auth()->user();
 
-        // Validar los datos enviados desde el formulario
-        $validated = $request->validate([
+        $request->validate([
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:usuarios,email,' . $user->id,
+            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
-        // Actualizar los campos del usuario
-        $user->nombre = $validated['nombre'];
-        $user->apellidos = $validated['apellidos'];
-        $user->email = $validated['email'];
+        $user->update([
+            'nombre' => $request->nombre,
+            'apellidos' => $request->apellidos,
+            'email' => $request->email,
+            'password' => $request->password ? bcrypt($request->password) : $user->password,
+        ]);
 
-        // Actualizar la contraseña solo si se proporciona una nueva
-        if (!empty($validated['password'])) {
-            $user->password = Hash::make($validated['password']);
-        }
-
-        //$user->save(); // Guardar los cambios en la base de datos
-
-        return redirect()->back()->with('success', 'Información actualizada correctamente');
+        return redirect()->back()->with('success', 'Datos actualizados correctamente.');
     }
 }
