@@ -19,8 +19,8 @@
 			</div>
 			<div class="nav-right">
 				<ul class="nav-menu">
-					<li><a href="#precios">PRECIOS</a></li>
-					<li><a href="#conocenos">CONÓCENOS</a></li>
+					<li><a href="/price-view">PRECIOS</a></li>
+					<li><a href="#por-que-elegir">CONÓCENOS</a></li>
 					<li><a href="#busca-club">BUSCA TU CLUB</a></li>
 				</ul>
 				<a href="/user-access" class="client-access">
@@ -70,117 +70,220 @@
 		</div>
 	</section>
 
+
+
 	<!-- SECCIÓN: LOS MEJORES ENTRENADORES -->
 	<section class="trainers" id="entrenadores">
 		<div class="container">
 			<h2>LOS MEJORES ENTRENADORES, PARA TU MEJOR VERSIÓN</h2>
 			<p>
-				Te presentamos a los profesionales que te acompañarán en tu camino al
-				éxito. Consulta sus horarios y entrena con ellos.
+				Te presentamos a los profesionales que te acompañarán en tu camino al éxito. Consulta sus horarios y
+				entrena bajo su supervisión.
 			</p>
 			<div class="trainer-cards">
 				<div class="trainer-card">
 					<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741180640/EntrenadorDePesas_wm1qsc.png"
 						alt="Entrenador 1" />
-					<h3>Mati Vela</h3>
+					<h3>Carlos Forza</h3>
 					<p>
-						Especialista en crossfit y musculación. ¡Te guiará a la cima!
+						Con Carlos Forza, jefe de entrenadores de fuerza y pesas, cada repetición te acerca a tu máximo
+						potencial.
 					</p>
 				</div>
 				<div class="trainer-card">
 					<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741180640/EntrenadorDeCardio_wwkcj0.png"
 						alt="Entrenador 2" />
-					<h3>John Smith</h3>
-					<p>Entrenador de alto rendimiento y enfoque integral.</p>
+					<h3>Marco Sprint</h3>
+					<p>Mejora tu cardio, bajo el liderazgo de Marco Sprint y su equipo de entrenadores.</p>
 				</div>
 				<div class="trainer-card">
 					<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741180640/freepik__35mm-film-photography-a-female-fitness-instructor-__60087_1_fvyj5u.png"
 						alt="Entrenador 3" />
-					<h3>Jane Doe</h3>
-					<p>Instructora de yoga y pilates para un equilibrio total.</p>
+					<h3>Marta Vibe</h3>
+					<p>Con Marta Vibe, jefa de actividades para socializar, divertirse y mejorar tu salud, disfrutarás
+						mientras te pones en forma haciendo lo que más te gusta.</p>
 				</div>
 			</div>
 		</div>
-	</section>
+		<section class="gym-container">
+			<!-- SECCIÓN: BUSCA TU CLUB -->
+			<section id="busca-club" class="gym-search">
+				<h2>Busca tu Club</h2>
+				<input type="text" id="busqueda" placeholder="Ingrese provincia">
+				<button onclick="buscar()">Buscar</button>
+				<section class="search-results" id="resultados"></section>
+			</section>
 
-	<!-- FOOTER -->
-	<footer>
-		<!-- BARRA SUPERIOR -->
-		<div class="top-bar">
-			<div class="footer-container">
-				<!-- Texto de "SÍGUENOS EN" -->
-				<span class="follow-us">SÍGUENOS EN</span>
+			<!-- SECCIÓN: MAPA -->
+			<section id="mapa-container">
+				<h2>Ubicación del Gimnasio</h2>
+				<iframe id="mapa" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade">
+				</iframe>
+			</section>
+		</section>
 
-				<!-- Íconos de redes sociales -->
-				<div class="social-icons">
-					<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-					<a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
-					<a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-					<a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-				</div>
-			</div>
-		</div>
+		<script>
+		async function buscar() {
+			const inputBusqueda = document.getElementById("busqueda").value.trim().toLowerCase();
+			const resultadosContainer = document.getElementById("resultados");
+			const mapaIframe = document.getElementById("mapa");
 
-		<!-- SECCIÓN CENTRAL (3 columnas) -->
-		<div class="middle-footer">
-			<div class="footer-container">
-				<div class="footer-section">
-					<h3>SERVICIOS E INFORMACIÓN</h3>
-					<ul>
-						<li><a href="#">Atención al cliente</a></li>
-						<li><a href="#">Reglamento interno</a></li>
-						<li><a href="#">Horarios de apertura</a></li>
-					</ul>
-				</div>
-				<div class="footer-section">
-					<h3>ACERCA DE</h3>
-					<ul>
-						<li><a href="#">Acerca de Vas A Llorar GYM</a></li>
-						<li><a href="#">Embajadores</a></li>
-						<li><a href="#">Trabaja con nosotros</a></li>
-					</ul>
-				</div>
-				<div class="footer-section">
-					<h3>POLÍTICAS Y PRIVACIDAD</h3>
-					<ul>
-						<li><a href="#">Reglamento de videovigilancia</a></li>
-						<li><a href="#">Términos y condiciones</a></li>
-						<li><a href="#">Aviso Legal</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+			resultadosContainer.innerHTML = ""; // Limpiar resultados previos
 
-		<!-- BARRA INFERIOR -->
-		<div class="bottom-bar">
-			<div class="footer-container">
-				<!-- Texto "CREADO POR" -->
-				<span class="created-by"><b>CREADO POR</b></span>
+			if (!inputBusqueda) {
+				resultadosContainer.innerHTML = "<p>Por favor, ingrese una provincia.</p>";
+				return;
+			}
 
-				<!-- Contenedor de creadores -->
-				<div class="creators">
-					<!-- Primer creador -->
-					<div class="creator">
-						<a href="#" target="_blank"><i class="fab fa-github"></i></a>
-						<a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-						<span>Israe A.B</span>
+			try {
+				const response = await fetch("data/gimnasios.json");
+				if (!response.ok) {
+					console.error("Error al cargar el JSON. Código: ", response.status);
+					resultadosContainer.innerHTML = "<p>Error al cargar el archivo JSON.</p>";
+					return;
+				}
+
+				const gimnasios = await response.json();
+				const resultados = gimnasios.filter(gym =>
+					gym.provincia.toLowerCase().includes(inputBusqueda)
+				);
+
+				if (resultados.length === 0) {
+					resultadosContainer.innerHTML = "<p>No se encontraron gimnasios.</p>";
+					return;
+				}
+
+				resultados.forEach(gym => {
+					resultadosContainer.innerHTML += `
+          <div class="gym-item">
+            <h3>${gym.nombre}</h3>
+            <p><strong>Provincia:</strong> ${gym.provincia}</p>
+            <p><strong>Dirección:</strong> ${gym.direccion}</p>
+            <p><strong>Horario Lectivo:</strong> ${gym.horario_lectivo}</p>
+            <p><strong>Horario Festivo:</strong> ${gym.horario_festivo}</p>
+          </div>
+        `;
+				});
+
+				// Mostrar el primer gimnasio en el iframe de Google Maps
+				mostrarEnIframe(resultados[0]);
+
+			} catch (error) {
+				console.error("Error en la búsqueda:", error);
+				resultadosContainer.innerHTML = "<p>Error al procesar la búsqueda.</p>";
+			}
+		}
+
+		function mostrarEnIframe(gym) {
+			if (!gym.direccion) {
+				console.error("No hay dirección disponible para este gimnasio.");
+				return;
+			}
+
+			// Construir la URL de Google Maps con la dirección del gimnasio
+			const mapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(gym.direccion)}&output=embed`;
+
+			// Actualizar el iframe con la nueva URL
+			document.getElementById("mapa").src = mapsUrl;
+		}
+		</script>
+
+
+
+		<!-- FOOTER -->
+		<footer>
+			<!-- BARRA SUPERIOR -->
+			<div class="top-bar">
+				<div class="footer-container">
+					<!-- Texto de "SÍGUENOS EN" -->
+					<span class="follow-us">SÍGUENOS EN</span>
+
+					<!-- Íconos de redes sociales -->
+					<div class="social-icons">
+						<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+						<a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+						<a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
 					</div>
-					<!-- Segundo creador -->
-					<div class="creator">
-						<a href="#" target="_blank"><i class="fab fa-github"></i></a>
-						<a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-						<span>Nicolas B.C</span>
+				</div>
+			</div>
+
+			<!-- SECCIÓN CENTRAL (3 columnas) -->
+			<div class="middle-footer">
+				<div class="footer-container">
+					<div class="footer-section">
+						<h3>SERVICIOS E INFORMACIÓN</h3>
+						<ul>
+							<li><a href="#">Atención al cliente</a></li>
+							<li><a href="#">Reglamento interno</a></li>
+							<li><a href="#">Horarios de apertura</a></li>
+						</ul>
 					</div>
-					<!-- Tercer creador -->
-					<div class="creator">
-						<a href="#" target="_blank"><i class="fab fa-github"></i></a>
-						<a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-						<span>Samuel U.N</span>
+					<div class="footer-section">
+						<h3>ACERCA DE</h3>
+						<ul>
+							<li><a href="#">Acerca de Vas A Llorar GYM</a></li>
+							<li><a href="#">Embajadores</a></li>
+							<li><a href="#">Trabaja con nosotros</a></li>
+						</ul>
+					</div>
+					<div class="footer-section">
+						<h3>POLÍTICAS Y PRIVACIDAD</h3>
+						<ul>
+							<li><a href="#">Reglamento de videovigilancia</a></li>
+							<li><a href="#">Términos y condiciones</a></li>
+							<li><a href="#">Aviso Legal</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
-		</div>
-	</footer>
+
+			<!-- BARRA INFERIOR -->
+			<div class="bottom-bar">
+				<div class="footer-container">
+					<!-- Texto "CREADO POR" -->
+					<span class="created-by"><b>CREADO POR</b></span>
+
+					<!-- Contenedor de creadores -->
+					<div class="creators">
+						<!-- Israel -->
+						<div class="creator">
+							<a href="https://github.com/Israelab01" target="_blank">
+								<i class="fab fa-github"></i>
+							</a>
+							<a href="https://linkedin.com/in/israel-abad-barrera" target="_blank">
+								<i class="fab fa-linkedin"></i>
+							</a>
+							<span>Israel Abad</span>
+						</div>
+
+						<!-- Samuel -->
+						<div class="creator">
+							<a href="https://github.com/samuel-un" target="_blank">
+								<i class="fab fa-github"></i>
+							</a>
+							<a href="https://www.linkedin.com/in/samuel-un/" target="_blank">
+								<i class="fab fa-linkedin"></i>
+							</a>
+							<span>Samuel Utrilla</span>
+						</div>
+
+						<!-- Nicolás -->
+						<div class="creator">
+							<a href="https://github.com/blurry0507" target="_blank">
+								<i class="fab fa-github"></i>
+							</a>
+							<a href="https://www.linkedin.com/in/nicolas-burgos-contreras-278b042b4" target="_blank">
+								<i class="fab fa-linkedin"></i>
+							</a>
+							<span>Nicolás Burgos</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</footer>
+
 
 
 </body>

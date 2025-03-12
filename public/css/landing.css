@@ -16,10 +16,14 @@ body {
 /* ENCABEZADO */
 header {
     width: 100%;
-    position: absolute;
+    position: fixed; /* Cambiado de absolute a fixed */
     top: 0;
     left: 0;
     z-index: 999;
+}
+
+.hero {
+    padding-top: 100px; /* Ajusta el valor según la altura de tu header */
 }
 
 /* BARRA DE NAVEGACIÓN */
@@ -109,6 +113,11 @@ nav {
     padding: 0 20px;
 }
 
+.hero-content h1,
+.hero-content p {
+    color: #fff; /* Asegúrate de que el color sea contrastante */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
 /* Contenido dentro del Hero */
 .hero-content {
     max-width: 600px;
@@ -143,26 +152,29 @@ nav {
 /* SECCIÓN: POR QUÉ ELEGIR VAS A LLORAR GYM */
 .why-choose {
     width: 100%;
-    padding: 80px 20px;
-    background-color: #121212; /* mismo color de fondo */
+    padding: 120px 40px; /* Más espacio interno */
+    background-color: #121212;
     text-align: center;
+    margin: 100px 0; /* Aumenta el espacio superior e inferior */
 }
 
 .why-choose .container {
-    max-width: 1200px;
+    max-width: 1000px; /* Contenedor un poco más estrecho para mejorar la legibilidad */
     margin: 0 auto;
 }
 
 .why-choose h2 {
-    font-size: 36px;
+    font-size: 40px; /* Un poco más grande para mayor impacto */
     color: #ffc300;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-weight: bold;
 }
 
 .why-choose p {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 50px;
+    font-size: 20px; /* Fuente ligeramente más grande */
+    line-height: 1.6;
+    margin-bottom: 60px;
+    color: #fff;
 }
 
 /* Features */
@@ -385,5 +397,128 @@ footer {
     .follow-us {
         display: block;
         margin-bottom: 10px;
+    }
+}
+
+.gym-search {
+    margin: 40px auto;
+    max-width: 600px;
+    text-align: center;
+    background: linear-gradient(135deg, #2e2e2e, #121212); /* Degradado sutil */
+    color: #fff;
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.4); /* Sombra profunda */
+    transition: all 0.3s ease; /* Suavizado de transiciones */
+}
+
+.gym-search:hover {
+    box-shadow: 0px 15px 50px rgba(0, 0, 0, 0.5); /* Efecto al pasar el ratón */
+    transform: translateY(-5px); /* Elevación sutil */
+}
+
+.gym-search h2 {
+    font-size: 38px;
+    color: #ffc300;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif; /* Fuente más moderna */
+    letter-spacing: 1px;
+}
+
+.gym-search input {
+    padding: 14px;
+    width: 70%;
+    max-width: 600px;
+    margin: 20px 0;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    color: #121212;
+    font-size: 18px;
+    transition: border-color 0.3s ease;
+}
+
+.gym-search input:focus {
+    outline: none;
+    border-color: #ffc300;
+}
+
+.gym-search button {
+    padding: 14px 28px;
+    background-color: #ffc300;
+    color: #121212;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gym-search button:hover {
+    background-color: #d4ac0d;
+    transform: translateY(-2px); /* Efecto de elevación */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Sombra más prominente */
+}
+
+/* Contenedor de resultados y mapa */
+.search-results {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px; /* Espacio entre la info del gimnasio y el mapa */
+}
+
+/* Tarjetas de gimnasio */
+.search-results .gym-item {
+    background-color: #3e3e3e;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 48%; /* 48% del ancho disponible */
+}
+
+.search-results .gym-item:hover {
+    transform: translateY(-5px); /* Efecto de elevación */
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3); /* Sombra más fuerte */
+}
+.search-results .gym-item h3 {
+    color: #ffc300;
+    margin-bottom: 8px; /* Reducir el espacio debajo del título */
+    font-size: 20px; /* Ajustar tamaño de fuente */
+}
+
+.search-results .gym-item p {
+    color: #fff;
+    font-size: 14px; /* Reducir tamaño de la fuente */
+    line-height: 1.4; /* Ajustar el interlineado */
+    margin-bottom: 5px; /* Reducir el espacio entre los párrafos */
+}
+
+/* Ajustes del mapa */
+.mapa-container {
+    flex: 1 1 48%; /* El mapa ocupa el 48% del ancho disponible */
+    height: 400px; /* Altura similar a la tarjeta del gimnasio */
+    margin-top: 0; /* El mapa debe estar alineado con la tarjeta */
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+    .search-results .gym-item {
+        flex: 1 1 100%; /* Ocupa el 100% del ancho en pantallas pequeñas */
+    }
+
+    .mapa-container {
+        margin-top: 30px;
+        flex: 1 1 100%; /* El mapa ocupa el 100% del ancho en pantallas pequeñas */
+        height: 300px; /* Ajustar altura para pantallas pequeñas */
     }
 }
