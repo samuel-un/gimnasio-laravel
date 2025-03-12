@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Actividad;
 use App\Models\Inscripcion;
+use App\Models\Instalacion;
+use App\Models\Reserva;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -14,12 +16,10 @@ class UserManagementController extends Controller
         $response = Http::get('https://gimnasios-g4coy481d-samuel-uns-projects.vercel.app/api/gimnasios');
         $gimnasios = $response->successful() ? $response->json() : [];
         $user = auth()->user();
-        $actividades = Actividad::take(4)->get(); // Limita a 4 actividades
+        $actividades = Actividad::take(4)->get();
+        $instalaciones = Instalacion::take(4)->get();
 
-        // Depuración: Descomenta esto para verificar los datos
-        // dd($actividades);
-
-        return view('user-management', compact('gimnasios', 'user', 'actividades'));
+        return view('user-management', compact('gimnasios', 'user', 'actividades', 'instalaciones'));
     }
 
     public function update(Request $request)
@@ -40,40 +40,60 @@ class UserManagementController extends Controller
             'password' => $request->password ? bcrypt($request->password) : $user->password,
         ]);
 
-        return redirect()->back()->with('success', 'Datos actualizados correctamente.');
+        return redirect()->back()->with('success_usuario', 'Datos actualizados correctamente.');
     }
 
     public function store(Request $request)
     {
-        // Validar que id_actividad exista en la tabla actividades_grupales
         $request->validate([
             'id_actividad' => 'required|integer|exists:actividades_grupales,id_actividad',
         ]);
 
-        // Obtener el usuario autenticado
         $user = auth()->user();
 
-        // Verificar si el usuario está autenticado
         if (!$user) {
-            return redirect()->back()->with('error', 'Debes iniciar sesión para inscribirte.');
+            return redirect()->back()->with('error_actividades', 'Debes iniciar sesión para inscribirte.');
         }
 
-        // Verificar si el usuario ya está inscrito en esta actividad
         $existingInscripcion = Inscripcion::where('id_usuario', $user->id)
             ->where('id_actividad', $request->id_actividad)
             ->first();
 
         if ($existingInscripcion) {
-            return redirect()->back()->with('error', 'Ya estás inscrito en esta actividad.');
+            return redirect()->back()->with('error_actividades', 'Ya estás inscrito en esta actividad.');
         }
 
-        // Crear una nueva inscripción
         Inscripcion::create([
             'id_usuario' => $user->id,
             'id_actividad' => $request->id_actividad,
         ]);
 
-        // Redirigir con mensaje de éxito
-        return redirect()->back()->with('success', 'Te has inscrito correctamente.');
+        return redirect()->back()->with('success_actividades', 'Te has inscrito correctamente.');
+    }
+
+    public function storeReservation(Request $request)
+    {
+        $request->validate([
+            'id_instalacion' => 'required|integer|exists:instalaciones,id_instalacion',
+            'fecha_reserva' => 'required|date',
+            'hora_inicio' => 'required',
+            'hora_fin' => 'required',
+        ]);
+
+        $user = auth()->user();
+
+        if (!$user) {
+            return redirect()->back()->with('error_reservas', 'Debes iniciar sesión para reservar.');
+        }
+
+        // Crear una nueva reserva
+        Reserva::create([
+            'id_instalacion' => $request->id_instalacion,
+            'fecha_reserva' => $request->fecha_reserva,
+            'hora_inicio' => $request->hora_inicio,
+            'hora_fin' => $request->hora_fin,
+        ]);
+
+        return redirect()->back()->with('success_reservas', 'Reserva realizada correctamente.');
     }
 }

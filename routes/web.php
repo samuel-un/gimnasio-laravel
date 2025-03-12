@@ -37,3 +37,9 @@ Route::put('/user-management', [UserManagementController::class, 'update'])->nam
 
 
 Route::post('/inscripciones', [UserManagementController::class, 'store'])->name('inscripciones.store')->middleware('auth');
+
+
+Route::get('/user-management', [UserManagementController::class, 'index'])->name('user-management.index');
+Route::put('/user-management/update', [UserManagementController::class, 'update'])->name('user-management.update');
+Route::post('/inscripciones', [UserManagementController::class, 'store'])->name('inscripciones.store');
+Route::post('/reservas', [UserManagementController::class, 'storeReservation'])->name('reservas.store');

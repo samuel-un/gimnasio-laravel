@@ -58,26 +58,52 @@
             <section class="bg-gray-500 p-5 rounded-lg mt-5">
                 <h2 class="text-xl font-bold mb-3">Reservar Instalaciones</h2>
                 <div id="instalaciones">
-                    <div class="bg-yellow-400 p-3 rounded-lg mb-3 flex">
-                        <img src="https://via.placeholder.com/80" alt="Piscina" class="w-20 h-20 rounded-lg">
-                        <div class="ml-4">
-                            <h3 class="text-lg font-bold">Piscina</h3>
-                            <p>Horario: <span id="horario-piscina">Cargando...</span></p>
-                            <p class="mt-2">
-                                <label for="fecha">Fecha:</label>
-                                <input type="date" id="fecha-piscina" class="p-2 bg-gray-800 text-white rounded">
-                            </p>
-                            <p class="mt-2">
-                                <label for="hora">Hora:</label>
-                                <select id="hora-piscina" class="p-2 bg-gray-800 text-white rounded">
-                                    <option value="">Selecciona una hora</option>
-                                </select>
-                            </p>
-                            <button onclick="reservarHorario(1, 'fecha-piscina', 'hora-piscina')" class="mt-3 bg-blue-500 text-white p-2 rounded">
-                                Reservar
-                            </button>
-                        </div>
+                    <!-- Mensaje de éxito o error para reservas -->
+                    @if (session('success_reservas'))
+                    <div class="bg-green-500 p-3 rounded mb-5 text-white">
+                        {{ session('success_reservas') }}
                     </div>
+                    @endif
+
+                    @if (session('error_reservas'))
+                    <div class="bg-red-500 p-3 rounded mb-5 text-white">
+                        {{ session('error_reservas') }}
+                    </div>
+                    @endif
+
+                    @if(!empty($instalaciones))
+                    <div class="grid grid-cols-2 gap-4">
+                        @foreach($instalaciones as $instalacion)
+                        <div class="bg-yellow-400 p-3 rounded-lg flex">
+                            <img src="https://via.placeholder.com/80" alt="{{ $instalacion->nombre_instalacion }}" class="w-16 h-16 rounded-lg">
+                            <div class="ml-3 flex-1">
+                                <h3 class="text-md font-bold">{{ $instalacion->nombre_instalacion }}</h3>
+                                <p class="text-sm">Lun-Vie: {{ $instalacion->horario_lun_vie ?? 'No disponible' }}</p>
+                                <p class="text-sm">Sáb-Dom/Fest: {{ $instalacion->horario_sab_dom_fest ?? 'No disponible' }}</p>
+                                <form action="{{ route('reservas.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id_instalacion" value="{{ $instalacion->id_instalacion }}">
+                                    <p class="mt-1">
+                                        <label for="fecha_reserva_{{ $instalacion->id_instalacion }}" class="text-sm">Fecha:</label>
+                                        <input type="date" id="fecha_reserva_{{ $instalacion->id_instalacion }}" name="fecha_reserva" class="p-1 bg-gray-800 text-white rounded w-full text-sm">
+                                    </p>
+                                    <p class="mt-1">
+                                        <label for="hora_inicio_{{ $instalacion->id_instalacion }}" class="text-sm">Hora inicio:</label>
+                                        <input type="time" id="hora_inicio_{{ $instalacion->id_instalacion }}" name="hora_inicio" class="p-1 bg-gray-800 text-white rounded w-full text-sm">
+                                    </p>
+                                    <p class="mt-1">
+                                        <label for="hora_fin_{{ $instalacion->id_instalacion }}" class="text-sm">Hora fin:</label>
+                                        <input type="time" id="hora_fin_{{ $instalacion->id_instalacion }}" name="hora_fin" class="p-1 bg-gray-800 text-white rounded w-full text-sm">
+                                    </p>
+                                    <button type="submit" class="mt-2 bg-blue-500 text-white p-1 rounded text-sm w-full">Reservar</button>
+                                </form>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    @else
+                    <p>No hay instalaciones disponibles en este momento.</p>
+                    @endif
                 </div>
             </section>
 
@@ -85,22 +111,21 @@
             <section class="bg-gray-500 p-5 rounded-lg mt-5">
                 <h2 class="text-xl font-bold mb-3">Actividades Grupales</h2>
                 <div id="actividades">
-                    <!-- Mensajes de éxito o error -->
-                    @if (session('success'))
+                    <!-- Mensaje de éxito o error para actividades -->
+                    @if (session('success_actividades'))
                     <div class="bg-green-500 p-3 rounded mb-5 text-white">
-                        {{ session('success') }}
+                        {{ session('success_actividades') }}
                     </div>
                     @endif
 
-                    @if (session('error'))
+                    @if (session('error_actividades'))
                     <div class="bg-red-500 p-3 rounded mb-5 text-white">
-                        {{ session('error') }}
+                        {{ session('error_actividades') }}
                     </div>
                     @endif
 
                     <!-- Lista de actividades -->
                     @php
-                        // Función para obtener la URL de la imagen según el nombre de la actividad
                         function getImageUrl($nombre)
                         {
                             $images = [
@@ -114,21 +139,23 @@
                     @endphp
 
                     @if(!empty($actividades))
-                    @foreach ($actividades as $actividad)
-                    <div class="bg-yellow-400 p-3 rounded-lg mb-3 flex">
-                        <img src="{{ getImageUrl($actividad->nombre) }}" alt="{{ $actividad->nombre ?? 'Actividad' }}" class="w-20 h-20 rounded-lg">
-                        <div class="ml-4">
-                            <h3 class="text-lg font-bold">{{ $actividad->nombre ?? 'Sin nombre' }}</h3>
-                            <p>Monitor: {{ $actividad->monitor ?? 'No asignado' }}</p>
-                            <p>Horario: {{ $actividad->horario ?? 'Sin horario' }}</p>
-                            <form action="{{ route('inscripciones.store') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="id_actividad" value="{{ $actividad->id_actividad }}">
-                                <button type="submit" class="mt-2 bg-blue-500 text-white p-2 rounded">Apuntarse</button>
-                            </form>
+                    <div class="grid grid-cols-2 gap-4">
+                        @foreach($actividades as $actividad)
+                        <div class="bg-yellow-400 p-3 rounded-lg flex">
+                            <img src="{{ getImageUrl($actividad->nombre) }}" alt="{{ $actividad->nombre ?? 'Actividad' }}" class="w-16 h-16 rounded-lg">
+                            <div class="ml-3 flex-1">
+                                <h3 class="text-md font-bold">{{ $actividad->nombre ?? 'Sin nombre' }}</h3>
+                                <p class="text-sm">Monitor: {{ $actividad->monitor ?? 'No asignado' }}</p>
+                                <p class="text-sm">Horario: {{ $actividad->horario ?? 'Sin horario' }}</p>
+                                <form action="{{ route('inscripciones.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id_actividad" value="{{ $actividad->id_actividad }}">
+                                    <button type="submit" class="mt-2 bg-blue-500 text-white p-1 rounded text-sm w-full">Apuntarse</button>
+                                </form>
+                            </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
                     @else
                     <p>No hay actividades grupales disponibles en este momento.</p>
                     @endif
@@ -139,10 +166,10 @@
             <section class="bg-gray-500 p-5 rounded-lg mt-5">
                 <h2 class="text-xl font-bold mb-3">Gestión de Usuario</h2>
 
-                <!-- Mensaje de éxito -->
-                @if (session('success'))
+                <!-- Mensaje de éxito o error para gestión de usuario -->
+                @if (session('success_usuario'))
                 <div class="bg-green-500 p-3 rounded mb-5">
-                    {{ session('success') }}
+                    {{ session('success_usuario') }}
                 </div>
                 @endif
 
@@ -217,16 +244,6 @@
             // Actualizar la dirección en el texto de cierres
             let textoDireccion = gimnasio && gimnasio.direccion ? gimnasio.direccion : "No disponible";
             document.getElementById("direccion-gimnasio").innerText = textoDireccion;
-        }
-
-        function reservarHorario(instalacionId, fechaId, horaId) {
-            let fecha = document.getElementById(fechaId).value;
-            let hora = document.getElementById(horaId).value;
-            if (fecha && hora) {
-                alert(`Reserva realizada para la instalación ${instalacionId} el ${fecha} a las ${hora}`);
-            } else {
-                alert("Por favor, selecciona una fecha y hora.");
-            }
         }
     </script>
 </body>
