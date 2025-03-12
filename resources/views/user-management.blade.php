@@ -40,11 +40,11 @@
                     <select id="gimnasios" class="p-2 bg-gray-800 text-white rounded" onchange="actualizarGimnasio()">
                         <option value="">Selecciona un gimnasio</option>
                         @if(!empty($gimnasios))
-                            @foreach($gimnasios as $gimnasio)
-                                <option value="{{ $gimnasio['nombre'] }}">{{ $gimnasio['nombre'] }}</option>
-                            @endforeach
+                        @foreach($gimnasios as $gimnasio)
+                        <option value="{{ $gimnasio['nombre'] }}">{{ $gimnasio['nombre'] }}</option>
+                        @endforeach
                         @else
-                            <option value="">No hay gimnasios disponibles</option>
+                        <option value="">No hay gimnasios disponibles</option>
                         @endif
                     </select>
                 </div>
@@ -59,7 +59,7 @@
                 <h2 class="text-xl font-bold mb-3">Reservar Instalaciones</h2>
                 <div id="instalaciones">
                     <div class="bg-yellow-400 p-3 rounded-lg mb-3 flex">
-                        <img src="ruta_imagen_piscina.jpg" alt="Piscina" class="w-20 h-20 rounded-lg">
+                        <img src="https://via.placeholder.com/80" alt="Piscina" class="w-20 h-20 rounded-lg">
                         <div class="ml-4">
                             <h3 class="text-lg font-bold">Piscina</h3>
                             <p>Horario: <span id="horario-piscina">Cargando...</span></p>
@@ -78,6 +78,60 @@
                             </button>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Sección de Actividades Grupales -->
+            <section class="bg-gray-500 p-5 rounded-lg mt-5">
+                <h2 class="text-xl font-bold mb-3">Actividades Grupales</h2>
+                <div id="actividades">
+                    <!-- Mensajes de éxito o error -->
+                    @if (session('success'))
+                    <div class="bg-green-500 p-3 rounded mb-5 text-white">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+
+                    @if (session('error'))
+                    <div class="bg-red-500 p-3 rounded mb-5 text-white">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+
+                    <!-- Lista de actividades -->
+                    @php
+                        // Función para obtener la URL de la imagen según el nombre de la actividad
+                        function getImageUrl($nombre)
+                        {
+                            $images = [
+                                'pilates' => 'https://res.cloudinary.com/dqcaqvplr/image/upload/v1741810260/qfgjbbqh1dxdk6vfd2td.png',
+                                'zumba' => 'https://res.cloudinary.com/dqcaqvplr/image/upload/v1741810260/vn3wtwvwfr06t3humvzp.png',
+                                'circuitos de entrenamiento personal' => 'https://res.cloudinary.com/dqcaqvplr/image/upload/v1741810260/jthkatfjwqofet5m31ep.png',
+                                'deportes de contacto' => 'https://res.cloudinary.com/dqcaqvplr/image/upload/v1741810260/wc6cweq7djn0bdqp2i7d.png'
+                            ];
+                            return $images[strtolower($nombre)] ?? 'https://via.placeholder.com/80';
+                        }
+                    @endphp
+
+                    @if(!empty($actividades))
+                    @foreach ($actividades as $actividad)
+                    <div class="bg-yellow-400 p-3 rounded-lg mb-3 flex">
+                        <img src="{{ getImageUrl($actividad->nombre) }}" alt="{{ $actividad->nombre ?? 'Actividad' }}" class="w-20 h-20 rounded-lg">
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold">{{ $actividad->nombre ?? 'Sin nombre' }}</h3>
+                            <p>Monitor: {{ $actividad->monitor ?? 'No asignado' }}</p>
+                            <p>Horario: {{ $actividad->horario ?? 'Sin horario' }}</p>
+                            <form action="{{ route('inscripciones.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id_actividad" value="{{ $actividad->id_actividad }}">
+                                <button type="submit" class="mt-2 bg-blue-500 text-white p-2 rounded">Apuntarse</button>
+                            </form>
+                        </div>
+                    </div>
+                    @endforeach
+                    @else
+                    <p>No hay actividades grupales disponibles en este momento.</p>
+                    @endif
                 </div>
             </section>
 
