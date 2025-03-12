@@ -20,7 +20,7 @@
       </div>
       <div class="nav-right">
         <ul class="nav-menu">
-          <li><a href="#precios">PRECIOS</a></li>
+          <li><a href="/price-view">PRECIOS</a></li>
           <li><a href="#por-que-elegir">CONÓCENOS</a></li>
           <li><a href="#busca-club">BUSCA TU CLUB</a></li>
         </ul>
@@ -78,8 +78,7 @@
     <div class="container">
       <h2>LOS MEJORES ENTRENADORES, PARA TU MEJOR VERSIÓN</h2>
       <p>
-        Te presentamos a los profesionales que te acompañarán en tu camino al
-        éxito. Consulta sus horarios y entrena con ellos.
+      Te presentamos a los profesionales que te acompañarán en tu camino al éxito. Consulta sus horarios y entrena bajo su supervisión.
       </p>
       <div class="trainer-cards">
         <div class="trainer-card">
@@ -87,9 +86,9 @@
             src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741180640/EntrenadorDePesas_wm1qsc.png"
             alt="Entrenador 1"
           />
-          <h3>Mati Vela</h3>
+          <h3>Carlos Forza</h3>
           <p>
-            Especialista en crossfit y musculación. ¡Te guiará a la cima!
+          Con Carlos Forza, jefe de entrenadores de fuerza y pesas, cada repetición te acerca a tu máximo potencial.
           </p>
         </div>
         <div class="trainer-card">
@@ -97,44 +96,46 @@
             src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741180640/EntrenadorDeCardio_wwkcj0.png"
             alt="Entrenador 2"
           />
-          <h3>John Smith</h3>
-          <p>Entrenador de alto rendimiento y enfoque integral.</p>
+          <h3>Marco Sprint</h3>
+          <p>Mejora tu cardio, bajo el liderazgo de Marco Sprint y su equipo de entrenadores.</p>
         </div>
         <div class="trainer-card">
           <img
             src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741180640/freepik__35mm-film-photography-a-female-fitness-instructor-__60087_1_fvyj5u.png"
             alt="Entrenador 3"
           />
-          <h3>Jane Doe</h3>
-          <p>Instructora de yoga y pilates para un equilibrio total.</p>
+          <h3>MMarta Vibe</h3>
+          <p>Con Marta Vibe, jefa de actividades para socializar, divertirse y mejorar tu salud, disfrutarás mientras te pones en forma haciendo lo que más te gusta.</p>
         </div>
       </div>
     </div>
-  </section>
-
-    
- <!-- SECCIÓN: BUSCA TU CLUB -->
- <section id="busca-club" class="gym-search">
+    <section class="gym-container">
+  <!-- SECCIÓN: BUSCA TU CLUB -->
+  <section id="busca-club" class="gym-search">
     <h2>Busca tu Club</h2>
     <input type="text" id="busqueda" placeholder="Ingrese provincia">
     <button onclick="buscar()">Buscar</button>
+    <section class="search-results" id="resultados"></section>
   </section>
 
-  <!-- Contenedor para mostrar los resultados -->
-  <section class="search-results" id="resultados"></section>
-
+  <!-- SECCIÓN: MAPA -->
   <section id="mapa-container">
-  <h2>Ubicación del Gimnasio</h2>
-  <iframe 
-    id="mapa" 
-    width="100%" 
-    height="400" 
-    style="border:0;" 
-    allowfullscreen="" 
-    loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
+    <h2>Ubicación del Gimnasio</h2>
+    <iframe 
+      id="mapa" 
+      width="100%" 
+      height="300" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </section>
 </section>
+
+
+
+
 
 
   <script>

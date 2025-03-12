@@ -16,11 +16,16 @@ body {
 /* ENCABEZADO */
 header {
   width: 100%;
-  position: absolute;
+  position: fixed; /* Cambiado de absolute a fixed */
   top: 0;
   left: 0;
   z-index: 999;
 }
+
+.hero {
+  padding-top: 100px; /* Ajusta el valor según la altura de tu header */
+}
+
 
 /* BARRA DE NAVEGACIÓN */
 nav {
@@ -389,7 +394,6 @@ footer {
     margin-bottom: 10px;
   }
 }
-
 .gym-search {
   margin: 40px auto;
   max-width: 600px;
@@ -430,4 +434,47 @@ footer {
 
 .gym-item p {
   margin: 2px 0;
+}
+
+.signup-button {
+  background-color: #ff5733;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  display: block; /* Para que el botón ocupe una línea completa */
+  width: 100%;
+  text-align: center;
+}
+
+.signup-button:hover {
+  background-color: #e04e2a;
+}
+
+.gym-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.gym-search, #mapa-container {
+  flex: 1;
+  max-width: 48%;
+}
+
+@media (max-width: 768px) {
+  .gym-container {
+    flex-direction: column;
+  }
+  .gym-search, #mapa-container {
+    max-width: 100%;
+  }
+}
+
+.mapa-container {
+  margin-top: 50px; /* Ajusta el valor según necesites */
 }
