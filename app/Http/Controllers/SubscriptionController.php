@@ -61,17 +61,16 @@ class SubscriptionController extends Controller
         $fechaFin = $fechaInicio->copy()->addDays(30);
 
         // Crear la membresía directamente en el modelo Perfil
-		Perfil::create([
-			'id_usuario' => $usuario->id,
-			'id_gimnasio' => $gimnasio, // Guardar el gimnasio seleccionado
-			'plan_membresia' => $plan,
-			'fecha_inicio_membresia' => $fechaInicio,
-			'fecha_fin_membresia' => $fechaFin,
-			'estado_membresia' => 'activa',
-		]);
-		
+        Perfil::create([
+            'id_usuario' => $usuario->id,
+            'id_gimnasio' => $gimnasio, // Guardar el gimnasio seleccionado
+            'plan_membresia' => $plan,
+            'fecha_inicio_membresia' => $fechaInicio,
+            'fecha_fin_membresia' => $fechaFin,
+            'estado_membresia' => 'activa',
+        ]);
 
-        // Redirigir al usuario con un mensaje de éxito
-        return redirect()->route('price-view')->with('success', '¡Suscripción exitosa! Has elegido el plan ' . ucfirst($plan) . ' en ' . $gimnasio);
+        // Redirigir al usuario con un mensaje de éxito a user-management
+        return redirect()->route('user-management')->with('success', '¡Suscripción exitosa! Has elegido el plan ' . ucfirst($plan) . ' en ' . $gimnasio);
     }
 }
