@@ -10,7 +10,7 @@ return new class extends Migration
     {
 		Schema::create('reservas', function (Blueprint $table) {
 			$table->id('id_reserva');
-			$table->unsignedBigInteger('id_instalacion'); // No foreign key yet
+			$table->unsignedBigInteger('id_instalacion');
 			$table->date('fecha_reserva');
 			$table->time('hora_inicio');
 			$table->time('hora_fin');

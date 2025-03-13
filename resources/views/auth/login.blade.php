@@ -81,14 +81,12 @@
 	<main class="container d-flex justify-content-center align-items-center flex-grow-1">
 		<section class="login-container">
 
-			<!-- Mostrar mensaje de éxito -->
 			@if (session('success'))
 			<div class="alert alert-success py-2 text-center" role="alert">
 				{{ session('success') }}
 			</div>
 			@endif
 
-			<!-- Mostrar errores de validación -->
 			@if ($errors->any())
 			<div class="alert alert-danger py-2" role="alert">
 				<ul class="mb-0 ps-3">

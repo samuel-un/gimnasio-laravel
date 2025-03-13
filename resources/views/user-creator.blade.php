@@ -5,10 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Crear nueva cuenta</title>
-	<!-- Usamos la misma versión de Bootstrap para mantener consistencia -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<style>
-	/* Fondo y overlay similar al login */
 	body {
 		background: url('https://res.cloudinary.com/dqcaqvplr/image/upload/v1740396560/rdeprhfbimjhxbqg9xih.png') no-repeat center center fixed;
 		background-size: cover;
@@ -30,7 +28,6 @@
 		position: relative;
 	}
 
-	/* Logo en la esquina superior izquierda */
 	.logo {
 		position: absolute;
 		top: 10px;
@@ -39,14 +36,12 @@
 		height: 70px;
 	}
 
-	/* Estilo del título */
 	h1 {
 		font-family: monospace;
 		font-size: 2.5rem;
 		font-weight: bold;
 	}
 
-	/* Contenedor central del formulario */
 	.signup-container {
 		background-color: #FFC107;
 		padding: 2rem;
@@ -59,7 +54,6 @@
 </head>
 
 <body class="min-vh-100 d-flex flex-column">
-	<!-- Header similar al login -->
 	<header class="text-center py-3 bg-warning">
 		<a href="/">
 			<img src="https://res.cloudinary.com/dqcaqvplr/image/upload/v1740052973/xzz7r6cldz70lzphtg5p.png" alt="Logo"
@@ -68,17 +62,14 @@
 		<h1>CREAR NUEVA CUENTA</h1>
 	</header>
 
-	<!-- Contenedor centralizado -->
 	<main class="container d-flex justify-content-center align-items-center flex-grow-1">
 		<section class="signup-container">
-			<!-- Mensaje de éxito -->
 			@if (session('success'))
 			<div class="alert alert-success py-2 text-center" role="alert">
 				{{ session('success') }}
 			</div>
 			@endif
 
-			<!-- Mensajes de error de validación -->
 			@if ($errors->any())
 			<div class="alert alert-danger py-2" role="alert">
 				<ul class="mb-0 ps-3">
@@ -89,7 +80,6 @@
 			</div>
 			@endif
 
-			<!-- Formulario para crear usuario con separación uniforme entre campos -->
 			<form action="{{ route('user-creator') }}" method="POST" class="d-grid gap-4">
 				@csrf
 
@@ -113,9 +103,7 @@
 		</section>
 	</main>
 
-	<!-- Validaciones JS para el formulario -->
 	<script src="{{ asset('js/user-creator.js') }}"></script>
-	<!-- Bootstrap JS -->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 </body>

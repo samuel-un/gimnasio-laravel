@@ -13,7 +13,7 @@ class Perfil extends Model
 
     protected $fillable = [
         'id_usuario',
-        'id_gimnasio', // Nuevo campo agregado
+        'id_gimnasio',
         'plan_membresia',
         'fecha_inicio_membresia',
         'fecha_fin_membresia',
@@ -27,6 +27,5 @@ class Perfil extends Model
 
     public function gimnasio()
     {
-        return $this->belongsTo(Gimnasio::class, 'id_gimnasio'); // Relación con gimnasio
-    }
+        return $this->belongsTo(Gimnasio::class, 'id_gimnasio');
 }

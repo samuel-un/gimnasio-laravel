@@ -28,9 +28,7 @@
 	.banner {
 		background: url('https://res.cloudinary.com/dup51jxlj/image/upload/v1741737732/FondoAreaClientes_1_znjsxx.png') no-repeat center center;
 		background-size: cover;
-		/* Ocupa toda la pantalla, aunque recorte un poco */
 		height: 500px;
-		/* Hace que ocupe toda la pantalla */
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -68,7 +66,6 @@
 </head>
 
 <body>
-	<!-- Barra superior (header) -->
 	<header class="text-center py-3 bg-warning">
 		<a href="/">
 			<img src="https://res.cloudinary.com/dqcaqvplr/image/upload/v1740052973/xzz7r6cldz70lzphtg5p.png" alt="Logo"
@@ -82,7 +79,6 @@
 
 	<div class="pricing-section">
 		<div class="row justify-content-center">
-			<!-- Plan Comfort -->
 			<div class="col-md-3 mx-2">
 				<div class="card shadow">
 					<h4 class="text-uppercase"><b>Comfort</b></h4>
@@ -107,7 +103,6 @@
 				</div>
 			</div>
 
-			<!-- Plan Premium -->
 			<div class="col-md-3 mx-2">
 				<div class="card shadow">
 					<h4 class="text-uppercase"><b>Premium</b></h4>
@@ -131,31 +126,6 @@
 					</form>
 				</div>
 			</div>
-
-			<!-- Plan Ultimate -->
-			<div class="col-md-3 mx-2">
-				<div class="card shadow">
-					<h4 class="text-uppercase"><b>Ultimate</b></h4>
-					<h3>€34,99</h3>
-					<p>/ 4 semanas</p>
-					<p><b>Todo desde Plan Comfort, y Premium:</b></p>
-					<p>- Invita a un amigo de manera ilimitada.</p>
-					<p>- Acceso a horarios de los entrenadores y posiblidad de acesoramiento personalizado..</p>
-					<p><b>Selecciona el gimnasio al que tendrás acceso: </b></p>
-					<form action="{{ route('price-view.store') }}" method="POST">
-						@csrf
-						<select name="gimnasio" class="form-control" required>
-							<option value="">Elige un gimnasio</option>
-							@foreach($gimnasios as $gimnasio)
-							<option value="{{ $gimnasio['id'] }}">{{ $gimnasio['nombre'] }} -
-								{{ $gimnasio['direccion'] }}</option>
-							@endforeach
-						</select>
-						<input type="hidden" name="plan" value="Ultimate">
-						<button type="submit" class="btn btn-success mt-3">ELIGE ULTIMATE</button>
-					</form>
-				</div>
-			</div>
 		</div>
 	</div>
 
@@ -163,7 +133,6 @@
 		* Para suscribirte a un plan debes tener una
 		<a href="/user-access">cuenta</a> primero.
 	</div>
-
 </body>
 
 </html>

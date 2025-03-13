@@ -1,32 +1,27 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* TIPOGRAFÍA Y CUERPO */
 body {
     font-family: Arial, sans-serif;
     background-color: #121212;
     color: #ffffff;
-    /* Si quieres que cada sección ocupe la pantalla completa, no uses height: 100vh en el body, sino en cada sección. */
 }
 
-/* ENCABEZADO */
 header {
     width: 100%;
-    position: fixed; /* Cambiado de absolute a fixed */
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 999;
 }
 
 .hero {
-    padding-top: 100px; /* Ajusta el valor según la altura de tu header */
+    padding-top: 100px;
 }
 
-/* BARRA DE NAVEGACIÓN */
 nav {
     display: flex;
     align-items: center;
@@ -36,7 +31,6 @@ nav {
     background-color: rgba(46, 46, 46, 0.9);
 }
 
-/* Secciones del nav */
 .nav-left {
     display: flex;
     align-items: center;
@@ -47,13 +41,11 @@ nav {
     align-items: center;
 }
 
-/* LOGO */
 .gym-logo {
     height: 60px;
     width: auto;
 }
 
-/* MENÚ DE NAVEGACIÓN */
 .nav-menu {
     display: flex;
     list-style: none;
@@ -76,7 +68,6 @@ nav {
     color: #d4ac0d;
 }
 
-/* Enlace de acceso */
 .client-access {
     display: flex;
     align-items: center;
@@ -90,14 +81,12 @@ nav {
     font-weight: 600;
 }
 
-/* ÍCONO DE PERFIL */
 .profile-icon {
     width: 40px;
     height: 40px;
     object-fit: cover;
 }
 
-/* SECCIÓN PRINCIPAL (HERO) */
 .hero {
     width: 100%;
     height: 100vh;
@@ -115,10 +104,10 @@ nav {
 
 .hero-content h1,
 .hero-content p {
-    color: #fff; /* Asegúrate de que el color sea contrastante */
+    color: #fff;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
-/* Contenido dentro del Hero */
+
 .hero-content {
     max-width: 600px;
 }
@@ -149,35 +138,33 @@ nav {
     background-color: #d4ac0d;
 }
 
-/* SECCIÓN: POR QUÉ ELEGIR VAS A LLORAR GYM */
 .why-choose {
     width: 100%;
-    padding: 120px 40px; /* Más espacio interno */
+    padding: 120px 40px;
     background-color: #121212;
     text-align: center;
-    margin: 100px 0; /* Aumenta el espacio superior e inferior */
+    margin: 100px 0;
 }
 
 .why-choose .container {
-    max-width: 1000px; /* Contenedor un poco más estrecho para mejorar la legibilidad */
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .why-choose h2 {
-    font-size: 40px; /* Un poco más grande para mayor impacto */
+    font-size: 40px;
     color: #ffc300;
     margin-bottom: 30px;
     font-weight: bold;
 }
 
 .why-choose p {
-    font-size: 20px; /* Fuente ligeramente más grande */
+    font-size: 20px;
     line-height: 1.6;
     margin-bottom: 60px;
     color: #fff;
 }
 
-/* Features */
 .features {
     display: flex;
     flex-wrap: wrap;
@@ -189,11 +176,11 @@ nav {
     max-width: 250px;
     text-align: center;
     position: relative;
-    padding-top: 60px; /* Espacio para la imagen y/o texto */
-    background-size: contain; /* Asegura que la imagen se vea completa */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-position: center center; /* Centra la imagen */
-    height: 200px; /* Ajusta el tamaño según lo necesites */
+    padding-top: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 200px;
 }
 
 .feature h3 {
@@ -207,11 +194,10 @@ nav {
     line-height: 1.4;
 }
 
-/* SECCIÓN: ENTRENADORES */
 .trainers {
     width: 100%;
     padding: 80px 20px;
-    background-color: #1f1f1f; /* un tono diferente para contrastar */
+    background-color: #1f1f1f;
     text-align: center;
 }
 
@@ -232,7 +218,6 @@ nav {
     margin-bottom: 50px;
 }
 
-/* Cards de entrenadores */
 .trainer-cards {
     display: flex;
     flex-wrap: wrap;
@@ -265,8 +250,6 @@ nav {
     line-height: 1.4;
 }
 
-/* ------------------ Footer ------------------ */
-/* --------- Footer layout --------- */
 footer {
     font-family: sans-serif;
     background-image: url("https://res.cloudinary.com/dup51jxlj/image/upload/v1741564355/freepik__the-style-is-candid-image-photography-with-natural__64385_1_lv75rq.png");
@@ -275,42 +258,36 @@ footer {
     background-repeat: no-repeat;
 }
 
-/* Contenedor genérico para cada barra o sección del footer */
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* BARRA SUPERIOR (amarilla) */
 .top-bar {
-    background: #ffc300; /* O usa un gradient si lo prefieres */
+    background: #ffc300;
     padding: 10px 0;
     text-align: center;
 }
 
-/* Texto "SÍGUENOS EN" */
 .follow-us {
     font-size: 20px;
     font-weight: bold;
-    color: #000; /* Texto negro */
+    color: #000;
     margin-right: 20px;
 }
 
-/* Íconos de redes sociales en la barra superior */
 .social-icons a {
-    color: #000; /* Íconos en negro */
+    color: #000;
     font-size: 24px;
     margin: 0 10px;
 }
 
-/* SECCIÓN CENTRAL (3 columnas, fondo negro) */
 .middle-footer {
     padding: 30px 0;
     text-align: center;
 }
 
-/* Ajuste de columnas */
 .footer-section {
     width: 30%;
     display: inline-block;
@@ -324,7 +301,7 @@ footer {
 .footer-section h3 {
     font-size: 18px;
     margin-bottom: 10px;
-    color: #ffc300; /* Amarillo para resaltar */
+    color: #ffc300;
 }
 
 .footer-section ul {
@@ -340,21 +317,18 @@ footer {
     text-decoration: none;
 }
 
-/* BARRA INFERIOR (amarilla) */
 .bottom-bar {
     background: #ffc300;
     padding: 10px 0;
     text-align: center;
 }
 
-/* Texto "CREADO POR" */
 .created-by {
     font-size: 18px;
     color: #000;
     margin-right: 20px;
 }
 
-/* Contenedor de todos los creadores */
 .creators {
     display: inline-flex;
     align-items: center;
@@ -362,26 +336,22 @@ footer {
     margin-left: 20px;
 }
 
-/* Cada creador individual */
 .creator {
     display: inline-flex;
     align-items: center;
     gap: 5px;
 }
 
-/* Íconos en la barra inferior */
 .creator a {
-    color: #000; /* Íconos en negro */
+    color: #000;
     font-size: 20px;
 }
 
-/* Nombre del creador */
 .creator span {
-    color: #000; /* Texto en negro */
+    color: #000;
     font-size: 16px;
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
     .footer-section {
         width: 100%;
@@ -404,17 +374,17 @@ footer {
     margin: 40px auto;
     max-width: 600px;
     text-align: center;
-    background: linear-gradient(135deg, #2e2e2e, #121212); /* Degradado sutil */
+    background: linear-gradient(135deg, #2e2e2e, #121212);
     color: #fff;
     padding: 40px 50px;
     border-radius: 15px;
-    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.4); /* Sombra profunda */
-    transition: all 0.3s ease; /* Suavizado de transiciones */
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
 }
 
 .gym-search:hover {
-    box-shadow: 0px 15px 50px rgba(0, 0, 0, 0.5); /* Efecto al pasar el ratón */
-    transform: translateY(-5px); /* Elevación sutil */
+    box-shadow: 0px 15px 50px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
 }
 
 .gym-search h2 {
@@ -422,7 +392,7 @@ footer {
     color: #ffc300;
     margin-bottom: 30px;
     font-weight: 600;
-    font-family: "Poppins", sans-serif; /* Fuente más moderna */
+    font-family: "Poppins", sans-serif;
     letter-spacing: 1px;
 }
 
@@ -459,20 +429,18 @@ footer {
 
 .gym-search button:hover {
     background-color: #d4ac0d;
-    transform: translateY(-2px); /* Efecto de elevación */
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Sombra más prominente */
+    transform: translateY(-2px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Contenedor de resultados y mapa */
 .search-results {
     margin-top: 40px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 30px; /* Espacio entre la info del gimnasio y el mapa */
+    gap: 30px;
 }
 
-/* Tarjetas de gimnasio */
 .search-results .gym-item {
     background-color: #3e3e3e;
     border-radius: 12px;
@@ -481,44 +449,42 @@ footer {
     text-align: left;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 1 1 48%; /* 48% del ancho disponible */
+    flex: 1 1 48%;
 }
 
 .search-results .gym-item:hover {
-    transform: translateY(-5px); /* Efecto de elevación */
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3); /* Sombra más fuerte */
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
 }
+
 .search-results .gym-item h3 {
     color: #ffc300;
-    margin-bottom: 8px; /* Reducir el espacio debajo del título */
-    font-size: 20px; /* Ajustar tamaño de fuente */
+    margin-bottom: 8px;
+    font-size: 20px;
 }
 
 .search-results .gym-item p {
     color: #fff;
-    font-size: 14px; /* Reducir tamaño de la fuente */
-    line-height: 1.4; /* Ajustar el interlineado */
-    margin-bottom: 5px; /* Reducir el espacio entre los párrafos */
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 5px;
 }
 
-/* Ajustes del mapa */
 .mapa-container {
-    flex: 1 1 48%; /* El mapa ocupa el 48% del ancho disponible */
-    height: 400px; /* Altura similar a la tarjeta del gimnasio */
-    margin-top: 0; /* El mapa debe estar alineado con la tarjeta */
+    flex: 1 1 48%;
+    height: 400px;
+    margin-top: 0;
     border-radius: 10px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive para pantallas pequeñas */
 @media (max-width: 768px) {
     .search-results .gym-item {
-        flex: 1 1 100%; /* Ocupa el 100% del ancho en pantallas pequeñas */
+        flex: 1 1 100%;
     }
-
     .mapa-container {
         margin-top: 30px;
-        flex: 1 1 100%; /* El mapa ocupa el 100% del ancho en pantallas pequeñas */
-        height: 300px; /* Ajustar altura para pantallas pequeñas */
+        flex: 1 1 100%;
+        height: 300px;
     }
 }

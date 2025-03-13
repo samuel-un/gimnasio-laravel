@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreign('id_gimnasio')->references('id')->on('Gimnasios')->onDelete('cascade');
             $table->time('hora_inicio');
             $table->time('hora_fin');
-            // Nuevos campos para el foro (aforo)
             $table->integer('foro_actual')->default(0);
             $table->integer('foro_limite');
             $table->timestamps();

@@ -5,12 +5,10 @@
 	<meta charset="UTF-8">
 	<title>Vas a Llorar GYM - Landing</title>
 	<link rel="stylesheet" href="{{ asset('css/landing.css') }}">
-	<!-- Asegúrate de incluir aquí las librerías de iconos, por ejemplo Font Awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-	<!-- ENCABEZADO Y NAVEGACIÓN -->
 	<header>
 		<nav>
 			<div class="nav-left">
@@ -41,7 +39,6 @@
 		</nav>
 	</header>
 
-	<!-- SECCIÓN HERO -->
 	<section class="hero" id="hero">
 		<div class="hero-content">
 			<h1>LLORA HOY, PERO SONRÍE MAÑANA</h1>
@@ -50,7 +47,6 @@
 		</div>
 	</section>
 
-	<!-- SECCIÓN: POR QUÉ ELEGIR VAS A LLORAR GYM -->
 	<section class="why-choose" id="por-que-elegir">
 		<div class="container">
 			<h2>POR QUÉ ELEGIR VAS A LLORAR GYM</h2>
@@ -81,7 +77,6 @@
 
 
 
-	<!-- SECCIÓN: LOS MEJORES ENTRENADORES -->
 	<section class="trainers" id="entrenadores">
 		<div class="container">
 			<h2>LOS MEJORES ENTRENADORES, PARA TU MEJOR VERSIÓN</h2>
@@ -115,7 +110,6 @@
 			</div>
 		</div>
 		<section class="gym-container">
-			<!-- SECCIÓN: BUSCA TU CLUB -->
 			<section id="busca-club" class="gym-search">
 				<h2>Busca tu Club</h2>
 				<input type="text" id="busqueda" placeholder="Ingrese provincia">
@@ -123,7 +117,6 @@
 				<section class="search-results" id="resultados"></section>
 			</section>
 
-			<!-- SECCIÓN: MAPA -->
 			<section id="mapa-container">
 				<h2>Ubicación del Gimnasio</h2>
 				<iframe id="mapa" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
@@ -138,7 +131,7 @@
 			const resultadosContainer = document.getElementById("resultados");
 			const mapaIframe = document.getElementById("mapa");
 
-			resultadosContainer.innerHTML = ""; // Limpiar resultados previos
+			resultadosContainer.innerHTML = "";
 
 			if (!inputBusqueda) {
 				resultadosContainer.innerHTML = "<p>Por favor, ingrese una provincia.</p>";
@@ -175,7 +168,6 @@
         `;
 				});
 
-				// Mostrar el primer gimnasio en el iframe de Google Maps
 				mostrarEnIframe(resultados[0]);
 
 			} catch (error) {
@@ -190,25 +182,19 @@
 				return;
 			}
 
-			// Construir la URL de Google Maps con la dirección del gimnasio
 			const mapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(gym.direccion)}&output=embed`;
 
-			// Actualizar el iframe con la nueva URL
 			document.getElementById("mapa").src = mapsUrl;
 		}
 		</script>
 
 
 
-		<!-- FOOTER -->
 		<footer>
-			<!-- BARRA SUPERIOR -->
 			<div class="top-bar">
 				<div class="footer-container">
-					<!-- Texto de "SÍGUENOS EN" -->
 					<span class="follow-us">SÍGUENOS EN</span>
 
-					<!-- Íconos de redes sociales -->
 					<div class="social-icons">
 						<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
 						<a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -217,7 +203,6 @@
 				</div>
 			</div>
 
-			<!-- SECCIÓN CENTRAL (3 columnas) -->
 			<div class="middle-footer">
 				<div class="footer-container">
 					<div class="footer-section">
@@ -247,15 +232,11 @@
 				</div>
 			</div>
 
-			<!-- BARRA INFERIOR -->
 			<div class="bottom-bar">
 				<div class="footer-container">
-					<!-- Texto "CREADO POR" -->
 					<span class="created-by"><b>CREADO POR</b></span>
 
-					<!-- Contenedor de creadores -->
 					<div class="creators">
-						<!-- Israel -->
 						<div class="creator">
 							<a href="https://github.com/Israelab01" target="_blank">
 								<i class="fab fa-github"></i>
@@ -266,7 +247,6 @@
 							<span>Israel Abad</span>
 						</div>
 
-						<!-- Samuel -->
 						<div class="creator">
 							<a href="https://github.com/samuel-un" target="_blank">
 								<i class="fab fa-github"></i>
@@ -277,7 +257,6 @@
 							<span>Samuel Utrilla</span>
 						</div>
 
-						<!-- Nicolás -->
 						<div class="creator">
 							<a href="https://github.com/blurry0507" target="_blank">
 								<i class="fab fa-github"></i>

@@ -9,30 +9,27 @@ class UserController extends Controller
 {
     public function create()
     {
-        return view('user-creator'); // Muestra la vista de creación de cuenta
+        return view('user-creator');
     }
 
     public function store(Request $request)
     {
-        // Validación de los datos recibidos
         $validated = $request->validate([
             'nombre' => 'required|string|max:100',
             'apellidos' => 'required|string|max:100',
             'email' => 'required|email|unique:usuarios,email',
             'password' => 'required|string|min:8',
-            'telefono' => 'nullable|string|min:9|max:9',  // Teléfono es opcional
+            'telefono' => 'nullable|string|min:9|max:9',
         ]);
 
-        // Crear el nuevo usuario en la base de datos
         User::create([
             'nombre' => $validated['nombre'],
             'apellidos' => $validated['apellidos'],
             'email' => $validated['email'],
-            'password' => bcrypt($validated['password']), // Encriptar la contraseña
-            'telefono' => $validated['telefono'] ?? null, // Si no se proporciona teléfono, se dejará como null
+            'password' => bcrypt($validated['password']), 
+            'telefono' => $validated['telefono'] ?? null,
         ]);
 
-        // Redirigir con un mensaje de éxito
         return redirect()->route('user-creator')->with('success', '¡Cuenta creada exitosamente!');
     }
 }

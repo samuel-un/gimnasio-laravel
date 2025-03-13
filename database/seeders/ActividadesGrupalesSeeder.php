@@ -10,7 +10,6 @@ class ActividadesGrupalesSeeder extends Seeder
 {
     public function run(): void
     {
-        // Definir el aforo límite para cada actividad
         $foro_limite_map = [
             'Zumba' => 50,
             'Pilates' => 30,
@@ -18,34 +17,28 @@ class ActividadesGrupalesSeeder extends Seeder
             'Circuitos de entrenamiento personal' => 20,
         ];
 
-        // Iteramos sobre cada gimnasio (suponiendo que hay 15 gimnasios)
         for ($gym = 1; $gym <= 15; $gym++) {
 
-            // Obtener el id del entrenador de Cardio (para Zumba) en el gimnasio actual
             $zumbaTrainerId = DB::table('entrenadores')
                 ->where('id_gimnasio', $gym)
                 ->where('nombre', 'Lucía González')
                 ->value('id_entrenador');
 
-            // Obtener el id del entrenador de Pilates en el gimnasio actual
             $pilatesTrainerId = DB::table('entrenadores')
                 ->where('id_gimnasio', $gym)
                 ->where('nombre', 'Ana López')
                 ->value('id_entrenador');
 
-            // Obtener el id del entrenador de Boxeo (para Deportes de contacto) en el gimnasio actual
             $deportesTrainerId = DB::table('entrenadores')
                 ->where('id_gimnasio', $gym)
                 ->where('nombre', 'Pedro Sánchez')
                 ->value('id_entrenador');
 
-            // Obtener el id del entrenador de Crossfit (para Circuitos de entrenamiento personal) en el gimnasio actual
             $circuitosTrainerId = DB::table('entrenadores')
                 ->where('id_gimnasio', $gym)
                 ->where('nombre', 'David García')
                 ->value('id_entrenador');
 
-            // Insertar las 4 actividades para el gimnasio actual
             DB::table('actividades_grupales')->insert([
                 [
                     'nombre_actividad' => 'Zumba',

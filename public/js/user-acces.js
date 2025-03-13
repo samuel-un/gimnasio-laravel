@@ -1,4 +1,3 @@
-// Validación del formulario de inicio de sesión
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
     const emailInput = document.getElementById("email");
@@ -11,13 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let isValid = true;
         let messages = [];
 
-        // Validar correo electrónico
         if (!validateEmail(email)) {
             isValid = false;
             messages.push("Por favor, ingresa un correo electrónico válido.");
         }
 
-        // Validar contraseña (mínimo 6 caracteres)
         if (password.length < 8) {
             isValid = false;
             messages.push("La contraseña debe tener al menos 8 caracteres.");
@@ -29,13 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Función para validar el formato del correo electrónico
     function validateEmail(email) {
         const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
         return regex.test(email);
     }
 
-    // Función para mostrar alertas en la parte superior del formulario
     function showAlert(messages) {
         const existingAlert = document.querySelector(".alert");
         if (existingAlert) {

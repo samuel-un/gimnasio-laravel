@@ -11,7 +11,7 @@ return new class extends Migration
 		Schema::create('perfiles', function (Blueprint $table) {
 			$table->id('id_perfil');
 			$table->foreignId('id_usuario')->constrained('usuarios')->onDelete('cascade');
-			$table->foreignId('id_gimnasio')->constrained('gimnasios')->onDelete('cascade'); // Nueva clave foránea
+			$table->foreignId('id_gimnasio')->constrained('gimnasios')->onDelete('cascade');
 			$table->enum('plan_membresia', ['comfort', 'premium', 'ultimate']);
 			$table->date('fecha_inicio_membresia');
 			$table->date('fecha_fin_membresia');

@@ -9,7 +9,6 @@ class GimnasiosTableSeeder extends Seeder
 {
     public function run(): void
     {
-        // Insertar gimnasios con el nuevo formato de nombre
         DB::table('gimnasios')->insert([
             ['nombre' => 'V.A.L GYM Madrid', 'provincia' => 'Madrid', 'direccion' => 'Calle de la Libertad, 23', 'horario_lectivo' => 'Lunes a Viernes: 7:00 - 21:00', 'horario_festivo' => 'Sábados: 9:00 - 15:00'],
             ['nombre' => 'V.A.L GYM Barcelona', 'provincia' => 'Barcelona', 'direccion' => 'Avenida Diagonal, 158', 'horario_lectivo' => 'Lunes a Viernes: 6:00 - 22:00', 'horario_festivo' => 'Domingos: Cerrado'],
