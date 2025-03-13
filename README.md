@@ -116,6 +116,18 @@ php artisan serve
   <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093830_lu4aim.png" width="850">
 </p>
 
+## User Management
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860595/Captura_de_pantalla_2025-03-13_110909_ayt4fx.png" width="850">
+</p>
+<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110917_tsidpg.png" width="850">
+</p>
+<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110924_gtbkr7.png" width="850">
+</p>
+<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110939_vjzgc5.png" width="850">
+</p>
+
 <h1>📊 Metodología</h1>
 
 En este proyecto hemos trabajado con la metodología **SCRUM** y **Programación en Pareja** para una mejor colaboración y desarrollo.

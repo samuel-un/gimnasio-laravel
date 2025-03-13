@@ -14,13 +14,12 @@ Route::get('/', function () {
 Route::get('/user-creator', [UserController::class, 'create'])->name('user-creator');
 Route::post('/user-creator', [UserController::class, 'store'])->name('user-creator.store');
 
-
 Route::get('/user-access', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/user-access', [AuthController::class, 'login'])->name('login.post');
 
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('/user-access');
+    return redirect('/');
 })->name('logout')->middleware('auth');
 
 Route::get('/price-view', [SubscriptionController::class, 'index'])->name('price-view');
@@ -31,6 +30,5 @@ Route::middleware('auth')->group(function () {
     Route::put('/user-management', [UserManagementController::class, 'update'])->name('user-management.update');
 
     Route::post('/inscripciones', [UserManagementController::class, 'store'])->name('inscripciones.store');
-
     Route::post('/reservas', [UserManagementController::class, 'storeReservation'])->name('reservas.store');
 });
