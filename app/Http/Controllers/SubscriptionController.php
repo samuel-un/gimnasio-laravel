@@ -36,6 +36,7 @@ class SubscriptionController extends Controller
             return redirect()->route('login')->with('error', '¡Necesitas iniciar sesión primero!');
         }
 
+        $usuario = Auth::user();
 
         if (Perfil::where('id_usuario', $usuario->id)->where('estado_membresia', 'activa')->exists()) {
             return redirect()->route('price-view')->with('error', 'Ya tienes una membresía activa.');

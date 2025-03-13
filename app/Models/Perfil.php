@@ -28,4 +28,5 @@ class Perfil extends Model
     public function gimnasio()
     {
         return $this->belongsTo(Gimnasio::class, 'id_gimnasio');
+    }
 }
