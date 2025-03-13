@@ -126,6 +126,30 @@
 					</form>
 				</div>
 			</div>
+
+			<div class="col-md-3 mx-2">
+				<div class="card shadow">
+					<h4 class="text-uppercase"><b>Ultimate</b></h4>
+					<h3>€34,99</h3>
+					<p>/ 4 semanas</p>
+					<p><b>Todo desde Plan Comfort, y Premium:</b></p>
+					<p>- Invita a un amigo de manera ilimitada.</p>
+					<p>- Acceso a horarios de los entrenadores y posiblidad de acesoramiento personalizado..</p>
+					<p><b>Selecciona el gimnasio al que tendrás acceso: </b></p>
+					<form action="{{ route('price-view.store') }}" method="POST">
+						@csrf
+						<select name="gimnasio" class="form-control" required>
+							<option value="">Elige un gimnasio</option>
+							@foreach($gimnasios as $gimnasio)
+							<option value="{{ $gimnasio['id'] }}">{{ $gimnasio['nombre'] }} -
+								{{ $gimnasio['direccion'] }}</option>
+							@endforeach
+						</select>
+						<input type="hidden" name="plan" value="Ultimate">
+						<button type="submit" class="btn btn-success mt-3">ELIGE ULTIMATE</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -133,6 +157,7 @@
 		* Para suscribirte a un plan debes tener una
 		<a href="/user-access">cuenta</a> primero.
 	</div>
+
 </body>
 
 </html>

@@ -1,67 +1,125 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741737236/Logo_Letras_solo_3_yiwriy.png" alt="GymWeb">
 </p>
 
-## About Laravel
+<h1>💪 V.A.L GYM- Plataforma WEB para nuestros Gimnasios 🏋️</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+V.A.L GYM es una aplicación web desarrollada en **Laravel y PHP** que permite a los usuarios buscar gimnasios en su ciudad, registrarse, gestionar su perfil y reservar instalaciones. La plataforma está diseñada para ofrecer una experiencia intuitiva y funcional.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h1>📌 Características</h1>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   🔍 **Búsqueda de gimnasios** en la ciudad.
+-   📝 **Registro e inicio de sesión** de usuarios.
+-   🎿 **Suscripción a gimnasios** mediante diferentes bonos.
+-   🏠 **Gestor de perfil**, permitiendo modificar datos personales.
+-   📅 **Reserva y consulta de horarios** de las instalaciones.
+-   📣 **Uso de API** para gestionar los datos de todos los gimnasios disponibles.
+-   📍 **Visualización de la ubicación** del gimnasio seleccionado en el mapa.
+-   📦 **Consumo de la API en la vista de precios**, permitiendo suscribirse a cualquier gimnasio.
+-   📓 **Implementación de migraciones** para la base de datos.
+-   ✨ **Seeders** para poblar la base de datos.
+-   🏗 **Desarrollo en Laravel**, utilizando rutas, modelos, controladores y vistas.
 
-## Learning Laravel
+<h1>⚙️ Tecnologías Utilizadas</h1>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   Laravel
+-   PHP
+-   MySQL
+-   Blade (Motor de plantillas de Laravel)
+-   Bootstrap (para la interfaz de usuario)
+-   API para la gestión y visualización de gimnasios
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+<h1>🔧 Instalación</h1>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+# Clonar el repositorio
+git clone https://github.com/samuel-un/gimnasio-laravel.git
 
-## Laravel Sponsors
+# Acceder al proyecto
+cd C:/xampp/htdocs/laravel/gimnasio-laravel
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# Instalar dependencias
+composer install
 
-### Premium Partners
+# Configurar el archivo .env con los datos de la base de datos
+cp .env.example .env
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=gimnasio
+DB_USERNAME=root
+DB_PASSWORD=
 
-## Contributing
+# Genera una nueva clave de aplicación y la guarda en el archivo .env
+php artisan key:generate
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Ejecutar migraciones y seeders
+php artisan migrate --seed
 
-## Code of Conduct
+# Levantar el servidor
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<h1>👥 Miembros del Proyecto</h1>
 
-## Security Vulnerabilities
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Rol</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/Israelab01">Israel Abad</a></td>
+      <td>Developer</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/Blurry0507">Nicolas Burgos</a></td>
+      <td>Developer</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/samuel-un">Samuel Utrilla</a></td>
+      <td>Developer</td>
+    </tr>
+  </tbody>
+</table>
+<h1>📸 Capturas</h1>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Landing Page
 
-## License
+<p align="center">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093706_rqu8c2.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093738_u5xmvp.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093748_l954ba.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093810_nd726v.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093817_cdaa9d.png" width="850">
+</p>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# gimnasio-laravel
+## Price View
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855279/Captura_de_pantalla_2025-03-13_094035_k526bq.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855279/Captura_de_pantalla_2025-03-13_094044_uyiagh.png" width="850">
+</p>
+
+## User Creator
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855279/Captura_de_pantalla_2025-03-13_093839_ug3ndt.png" width="850">
+</p>
+
+## User Access
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093830_lu4aim.png" width="850">
+</p>
+
+<h1>📊 Metodología</h1>
+
+En este proyecto hemos trabajado con la metodología **SCRUM** y **Programación en Pareja** para una mejor colaboración y desarrollo.
+
+<h1>📋 Licencia</h1>
+
+Este proyecto se encuentra bajo la licencia **MIT**.
