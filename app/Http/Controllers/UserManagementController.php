@@ -29,7 +29,7 @@ class UserManagementController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+            'email' => 'required|email|max:255|unique:usuarios,email,' . $user->id,
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
@@ -86,7 +86,6 @@ class UserManagementController extends Controller
             return redirect()->back()->with('error_reservas', 'Debes iniciar sesión para reservar.');
         }
 
-        // Crear una nueva reserva
         Reserva::create([
             'id_instalacion' => $request->id_instalacion,
             'fecha_reserva' => $request->fecha_reserva,
