@@ -29,3 +29,4 @@ class Perfil extends Model
     {
         return $this->belongsTo(Gimnasio::class, 'id_gimnasio');
 }
+}
