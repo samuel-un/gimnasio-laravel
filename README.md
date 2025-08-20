@@ -1,47 +1,52 @@
+
 <p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741737236/Logo_Letras_solo_3_yiwriy.png" alt="GymWeb">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741737236/Logo_Letras_solo_3_yiwriy.png" alt="GymWeb Logo">
 </p>
 
-<h1>💪 V.A.L GYM- Plataforma WEB para nuestros Gimnasios 🏋️</h1>
+# 💪 V.A.L GYM - Web Platform for Gyms 🏋️
 
-V.A.L GYM es una aplicación web desarrollada en **Laravel y PHP** que permite a los usuarios buscar gimnasios en su ciudad, registrarse, gestionar su perfil y reservar instalaciones. La plataforma está diseñada para ofrecer una experiencia intuitiva y funcional.
+**V.A.L GYM** is a **web application built with Laravel and PHP** that allows users to search gyms in their city, register, manage their profile, and book facilities.  
+The platform is designed to provide an intuitive and functional user experience.
 
-<h1>📌 Características</h1>
+---
 
--   🔍 **Búsqueda de gimnasios** en la ciudad.
--   📝 **Registro e inicio de sesión** de usuarios.
--   🎿 **Suscripción a gimnasios** mediante diferentes bonos.
--   🏠 **Gestor de perfil**, permitiendo modificar datos personales.
--   📅 **Reserva y consulta de horarios** de las instalaciones.
--   📣 **Uso de API** para gestionar los datos de todos los gimnasios disponibles.
--   📍 **Visualización de la ubicación** del gimnasio seleccionado en el mapa.
--   📦 **Consumo de la API en la vista de precios**, permitiendo suscribirse a cualquier gimnasio.
--   📓 **Implementación de migraciones** para la base de datos.
--   ✨ **Seeders** para poblar la base de datos.
--   🏗 **Desarrollo en Laravel**, utilizando rutas, modelos, controladores y vistas.
+## 📌 Features
 
-<h1>⚙️ Tecnologías Utilizadas</h1>
+- 🔍 **Search gyms** in the selected city.  
+- 📝 **User registration and login**.  
+- 🎿 **Subscriptions to gyms** through different membership plans.  
+- 🏠 **Profile management**, allowing users to edit personal information.  
+- 📅 **Booking system** and schedule visualization.  
+- 📣 **API integration** to manage and display gym data.  
+- 📍 **Map integration** to show gym locations.  
+- 📦 **Price view connected to API**, allowing subscriptions to gyms directly.  
+- 📓 **Database migrations** and **seeders** included.  
+- 🏗 **Laravel MVC architecture**: routes, models, controllers, and views.  
 
--   Laravel
--   PHP
--   MySQL
--   Blade (Motor de plantillas de Laravel)
--   Bootstrap (para la interfaz de usuario)
--   API para la gestión y visualización de gimnasios
+---
 
-<h1>🔧 Instalación</h1>
+## ⚙️ Tech Stack
+
+- **Backend**: Laravel, PHP  
+- **Database**: MySQL  
+- **Frontend**: Blade (Laravel templates), Bootstrap  
+- **API**: Gym management & visualization API  
+
+---
+
+## 🔧 Installation
 
 ```bash
-# Clonar el repositorio
+# Clone repository
 git clone https://github.com/samuel-un/gimnasio-laravel.git
 
-# Acceder al proyecto
+# Enter project folder
 cd C:/xampp/htdocs/laravel/gimnasio-laravel
 
-# Instalar dependencias
+# Install dependencies
 composer install
 
-# Configurar el archivo .env con los datos de la base de datos
+# Configure .env file with database info
 cp .env.example .env
 
 DB_CONNECTION=mysql
@@ -51,87 +56,53 @@ DB_DATABASE=gimnasio
 DB_USERNAME=root
 DB_PASSWORD=
 
-# Genera una nueva clave de aplicación y la guarda en el archivo .env
+# Generate application key
 php artisan key:generate
 
-# Ejecutar migraciones y seeders
+# Run migrations and seeders
 php artisan migrate --seed
 
-# Levantar el servidor
+# Start local server
 php artisan serve
 ```
 
-<h1>👥 Miembros del Proyecto</h1>
+---
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Rol</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href="https://github.com/Israelab01">Israel Abad</a></td>
-      <td>Developer</td>
-    </tr>
-    <tr>
-      <td><a href="https://github.com/Blurry0507">Nicolas Burgos</a></td>
-      <td>Developer</td>
-    </tr>
-    <tr>
-      <td><a href="https://github.com/samuel-un">Samuel Utrilla</a></td>
-      <td>Developer</td>
-    </tr>
-  </tbody>
-</table>
-<h1>📸 Capturas</h1>
+## 👥 Project Members
 
-## Landing Page
+| Name | Role |
+|------|------|
+| [Israel Abad](https://github.com/Israelab01) | Developer |
+| [Nicolas Burgos](https://github.com/Blurry0507) | Developer |
+| [Samuel Utrilla](https://github.com/samuel-un) | Developer |
 
-<p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093706_rqu8c2.png" width="850">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093738_u5xmvp.png" width="850">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093748_l954ba.png" width="850">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093810_nd726v.png" width="850">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093817_cdaa9d.png" width="850">
-</p>
+---
 
-## Price View
+## 📸 Screenshots
 
-<p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855279/Captura_de_pantalla_2025-03-13_094035_k526bq.png" width="850">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855279/Captura_de_pantalla_2025-03-13_094044_uyiagh.png" width="850">
-</p>
+### 🖥 Landing Page
+(Images hosted on Cloudinary)
 
-## User Creator
+### 💰 Price View
+(Images hosted on Cloudinary)
 
-<p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855279/Captura_de_pantalla_2025-03-13_093839_ug3ndt.png" width="850">
-</p>
+### 👤 User Creator
+(Images hosted on Cloudinary)
 
-## User Access
+### 🔑 User Access
+(Images hosted on Cloudinary)
 
-<p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093830_lu4aim.png" width="850">
-</p>
+### ⚙️ User Management
+(Images hosted on Cloudinary)
 
-## User Management
+---
 
-<p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860595/Captura_de_pantalla_2025-03-13_110909_ayt4fx.png" width="850">
-</p>
-<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110917_tsidpg.png" width="850">
-</p>
-<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110924_gtbkr7.png" width="850">
-</p>
-<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110939_vjzgc5.png" width="850">
-</p>
+## 📊 Methodology
 
-<h1>📊 Metodología</h1>
+This project was developed using **SCRUM** methodology and **Pair Programming** to ensure collaboration and agile development.
 
-En este proyecto hemos trabajado con la metodología **SCRUM** y **Programación en Pareja** para una mejor colaboración y desarrollo.
+---
 
-<h1>📋 Licencia</h1>
+## 📋 License
 
-Este proyecto se encuentra bajo la licencia **MIT**.
+This project is licensed under the **MIT License**.
