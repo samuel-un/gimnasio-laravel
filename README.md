@@ -114,11 +114,11 @@ php artisan serve
 <p align="center">
   <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860595/Captura_de_pantalla_2025-03-13_110909_ayt4fx.png" width="850">
 </p>
-<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110917_tsidpg.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110917_tsidpg.png" width="850">
 </p>
-<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110924_gtbkr7.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110924_gtbkr7.png" width="850">
 </p>
-<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110939_vjzgc5.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110939_vjzgc5.png" width="850">
 </p>
 
 ---
