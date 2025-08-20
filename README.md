@@ -78,22 +78,48 @@ php artisan serve
 
 ---
 
-## 📸 Screenshots
+<h1>📸 Capturas</h1>
 
-### 🖥 Landing Page
-(Images hosted on Cloudinary)
+## Landing Page
 
-### 💰 Price View
-(Images hosted on Cloudinary)
+<p align="center">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093706_rqu8c2.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093738_u5xmvp.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093748_l954ba.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093810_nd726v.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093817_cdaa9d.png" width="850">
+</p>
 
-### 👤 User Creator
-(Images hosted on Cloudinary)
+## Price View
 
-### 🔑 User Access
-(Images hosted on Cloudinary)
+<p align="center">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855279/Captura_de_pantalla_2025-03-13_094035_k526bq.png" width="850">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855279/Captura_de_pantalla_2025-03-13_094044_uyiagh.png" width="850">
+</p>
 
-### ⚙️ User Management
-(Images hosted on Cloudinary)
+## User Creator
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855279/Captura_de_pantalla_2025-03-13_093839_ug3ndt.png" width="850">
+</p>
+
+## User Access
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093830_lu4aim.png" width="850">
+</p>
+
+## User Management
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860595/Captura_de_pantalla_2025-03-13_110909_ayt4fx.png" width="850">
+</p>
+<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110917_tsidpg.png" width="850">
+</p>
+<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110924_gtbkr7.png" width="850">
+</p>
+<img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110939_vjzgc5.png" width="850">
+</p>
 
 ---
 
