@@ -14,7 +14,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_entrenador');
             $table->foreign('id_entrenador')->references('id_entrenador')->on('entrenadores')->onDelete('cascade');
             $table->unsignedBigInteger('id_gimnasio');
-            $table->foreign('id_gimnasio')->references('id')->on('Gimnasios')->onDelete('cascade');
+            $table->foreign('id_gimnasio')->references('id')->on('gimnasios')->onDelete('cascade');
             $table->time('hora_inicio');
             $table->time('hora_fin');
             $table->integer('foro_actual')->default(0);
