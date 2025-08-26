@@ -7,9 +7,9 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('landing');
-})->name('home');
+Route::get('/health', fn () => response('ok', 200))->name('health');
+
+Route::get('/', fn () => response('ok-home', 200))->name('home');
 
 Route::get('/user-creator', [UserController::class, 'create'])->name('user-creator');
 Route::post('/user-creator', [UserController::class, 'store'])->name('user-creator.store');
