@@ -20,6 +20,8 @@ class Perfil extends Model
         'estado_membresia',
     ];
 
+	public $timestamps = true;
+
     public function user()
     {
         return $this->belongsTo(User::class, 'id_usuario');

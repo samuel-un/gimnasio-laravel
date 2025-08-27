@@ -17,6 +17,8 @@ class Subscription extends Model
         'gimnasio',
     ];
 
+	public $timestamps = true;
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
