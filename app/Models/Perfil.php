@@ -10,6 +10,10 @@ class Perfil extends Model
     use HasFactory;
 
     protected $table = 'perfiles';
+    protected $primaryKey = 'id_perfil';
+    public $timestamps = true;
+    public $incrementing = true;
+    protected $keyType = 'int';
 
     protected $fillable = [
         'id_usuario',
@@ -20,7 +24,10 @@ class Perfil extends Model
         'estado_membresia',
     ];
 
-	public $timestamps = true;
+    protected $casts = [
+        'fecha_inicio_membresia' => 'date',
+        'fecha_fin_membresia'    => 'date',
+    ];
 
     public function user()
     {
@@ -30,5 +37,5 @@ class Perfil extends Model
     public function gimnasio()
     {
         return $this->belongsTo(Gimnasio::class, 'id_gimnasio');
-}
+    }
 }
