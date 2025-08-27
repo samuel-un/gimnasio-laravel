@@ -10,6 +10,14 @@ The platform is designed to provide an intuitive and functional user experience.
 
 ---
 
+## 🚀 Live Deployment
+
+- **Backend (Railway):** [https://gimnasio-laravel-production.up.railway.app/](https://gimnasio-laravel-production.up.railway.app/)  
+
+✅ The project is currently **finished and in production**.
+
+---
+
 ## 📌 Features
 
 - 🔍 **Search gyms** in the selected city.  
