@@ -4,18 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Carbon\Carbon;
 use App\Models\Perfil;
 use App\Models\Subscription;
+use App\Models\Gimnasio;
+use Carbon\Carbon;
 
 class SubscriptionController extends Controller
 {
     public function index()
     {
-        $response = Http::get('https://gimnasios-g4coy481d-samuel-uns-projects.vercel.app/api/gimnasios');
-        $gimnasios = $response->successful() ? $response->json() : [];
+        $gimnasios = Gimnasio::select('id', 'nombre', 'direccion')->get()->toArray();
         return view('prices', compact('gimnasios'));
     }
 
@@ -26,13 +25,13 @@ class SubscriptionController extends Controller
         }
 
         $request->validate([
-            'gimnasio' => 'required|integer|exists:gimnasios,id_gimnasio',
+            'gimnasio' => 'required|integer|exists:gimnasios,id',
             'plan'     => 'required|string|in:comfort,premium,ultimate',
         ]);
 
-        $plan = strtolower($request->input('plan'));
+        $plan       = strtolower($request->input('plan'));
         $gimnasioId = (int) $request->input('gimnasio');
-        $usuario = Auth::user();
+        $usuario    = Auth::user();
 
         if (Perfil::where('id_usuario', $usuario->id)->where('estado_membresia', 'activa')->exists()) {
             return redirect()->route('price-view')->with('error', 'Ya tienes una membresía activa.');
@@ -43,13 +42,13 @@ class SubscriptionController extends Controller
 
         try {
             Perfil::create([
-				'id_usuario'             => $usuario->id,
-				'id_gimnasio'            => (int) $gimnasio,
-				'plan_membresia'         => $plan,
-				'fecha_inicio_membresia' => $inicio->toDateString(),
-				'fecha_fin_membresia'    => $fin->toDateString(),
-				'estado_membresia'       => 'activa',
-			]);
+                'id_usuario'             => $usuario->id,
+                'id_gimnasio'            => $gimnasioId,
+                'plan_membresia'         => $plan,
+                'fecha_inicio_membresia' => $inicio->toDateString(),
+                'fecha_fin_membresia'    => $fin->toDateString(),
+                'estado_membresia'       => 'activa',
+            ]);
         } catch (\Throwable $e) {
             Log::warning('Fallo al crear Perfil, guardando en Subscription', [
                 'user_id'    => $usuario->id,

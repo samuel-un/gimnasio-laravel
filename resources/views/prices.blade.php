@@ -93,8 +93,7 @@
 						<select name="gimnasio" class="form-control" required>
 							<option value="">Elige un gimnasio</option>
 							@foreach($gimnasios as $gimnasio)
-							<option value="{{ $gimnasio['id'] }}">{{ $gimnasio['nombre'] }} -
-								{{ $gimnasio['direccion'] }}</option>
+							<option value="{{ $gimnasio['id'] }}">{{ $gimnasio['nombre'] }} - {{ $gimnasio['direccion'] }}</option>
 							@endforeach
 						</select>
 						<input type="hidden" name="plan" value="Comfort">
@@ -117,8 +116,7 @@
 						<select name="gimnasio" class="form-control" required>
 							<option value="">Elige un gimnasio</option>
 							@foreach($gimnasios as $gimnasio)
-							<option value="{{ $gimnasio['id'] }}">{{ $gimnasio['nombre'] }} -
-								{{ $gimnasio['direccion'] }}</option>
+							<option value="{{ $gimnasio['id'] }}">{{ $gimnasio['nombre'] }} - {{ $gimnasio['direccion'] }}</option>
 							@endforeach
 						</select>
 						<input type="hidden" name="plan" value="Premium">
@@ -141,8 +139,7 @@
 						<select name="gimnasio" class="form-control" required>
 							<option value="">Elige un gimnasio</option>
 							@foreach($gimnasios as $gimnasio)
-							<option value="{{ $gimnasio['id'] }}">{{ $gimnasio['nombre'] }} -
-								{{ $gimnasio['direccion'] }}</option>
+							<option value="{{ $gimnasio['id'] }}">{{ $gimnasio['nombre'] }} - {{ $gimnasio['direccion'] }}</option>
 							@endforeach
 						</select>
 						<input type="hidden" name="plan" value="Ultimate">
