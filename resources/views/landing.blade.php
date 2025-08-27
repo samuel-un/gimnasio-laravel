@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Vas a Llorar GYM - Landing</title>
-	<link rel="stylesheet" href="{{ asset('css/landing.css') }}">
+	<link rel="stylesheet" href="/css/landing.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
