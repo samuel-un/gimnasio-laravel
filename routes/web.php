@@ -23,7 +23,9 @@ Route::post('/logout', function () {
 })->name('logout')->middleware('auth');
 
 Route::get('/price-view', [SubscriptionController::class, 'index'])->name('price-view');
-Route::post('/price-view', [SubscriptionController::class, 'store'])->name('price-view.store');
+Route::post('/price-view', [SubscriptionController::class, 'store'])
+    ->middleware('auth')
+    ->name('price-view.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/user-management', [UserManagementController::class, 'index'])->name('user-management.index');

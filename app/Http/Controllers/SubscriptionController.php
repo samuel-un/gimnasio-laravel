@@ -24,6 +24,11 @@ class SubscriptionController extends Controller
 
     public function store(Request $request)
     {
+		if (!Auth::check()) {
+			return redirect()->route('login')
+				->with('error', 'Inicia sesión para elegir un plan.');
+		}
+
         $request->validate([
             'gimnasio' => 'required|string',
             'plan' => 'required|string',
