@@ -96,7 +96,7 @@ php artisan serve
   <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093738_u5xmvp.png" width="850">
   <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093748_l954ba.png" width="850">
   <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093810_nd726v.png" width="850">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093817_cdaa9d.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1756487741/Footer_VAL_Gym.png" width="850">
 </p>
 
 ## Price View
