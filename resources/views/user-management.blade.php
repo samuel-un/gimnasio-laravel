@@ -145,6 +145,17 @@
 			</nav>
 		</aside>
 		<main class="w-3/4 p-10">
+
+            {{-- NUEVO: bloque de membresía --}}
+            @if(isset($perfil) && $perfil)
+            <section class="p-5 rounded-lg mb-5">
+                <h2 class="text-xl font-bold mb-3 text-white">Tu membresía</h2>
+                <p class="text-white mb-1">Plan: <span class="text-yellow-400">{{ ucfirst($perfil->plan_membresia) }}</span> ({{ $perfil->estado_membresia }})</p>
+                <p class="text-white mb-1">Gimnasio: {{ optional($perfil->gimnasio)->nombre }} — {{ optional($perfil->gimnasio)->direccion }}</p>
+                <p class="text-white mb-0">Periodo: {{ optional($perfil->fecha_inicio_membresia)->format('d/m/Y') }} — {{ optional($perfil->fecha_fin_membresia)->format('d/m/Y') }}</p>
+            </section>
+            @endif
+
 			<section class="p-5 rounded-lg">
 				<h2 class="text-xl font-bold mb-3 text-white">Selecciona un gimnasio:</h2>
 				<div>
@@ -362,6 +373,20 @@
 		let textoDireccion = gimnasio && gimnasio.direccion ? gimnasio.direccion : "No disponible";
 		document.getElementById("direccion-gimnasio").innerText = textoDireccion;
 	}
+
+    {{-- NUEVO: preseleccionar el gimnasio del perfil y actualizar datos --}}
+    @if(isset($perfil) && $perfil && optional($perfil->gimnasio)->nombre)
+    document.addEventListener('DOMContentLoaded', function(){
+        var sel = document.getElementById('gimnasios');
+        if (sel) {
+            var target = @json(optional($perfil->gimnasio)->nombre);
+            for (var i=0;i<sel.options.length;i++){
+                if (sel.options[i].value === target) { sel.selectedIndex = i; break; }
+            }
+            actualizarGimnasio();
+        }
+    });
+    @endif
 	</script>
 </body>
 
