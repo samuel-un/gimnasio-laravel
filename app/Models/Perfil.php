@@ -15,14 +15,14 @@ class Perfil extends Model
     public $incrementing = true;
     protected $keyType = 'int';
 
-    protected $fillable = [
-        'id_usuario',
-        'id_gimnasio',
-        'plan_membresia',
-        'fecha_inicio_membresia',
-        'fecha_fin_membresia',
-        'estado_membresia',
-    ];
+	protected $fillable = [
+		'id_usuario',
+		'id_gimnasio',
+		'plan_membresia',
+		'fecha_inicio_membresia',
+		'fecha_fin_membresia',
+		'estado_membresia',
+	];
 
     protected $casts = [
         'fecha_inicio_membresia' => 'date',

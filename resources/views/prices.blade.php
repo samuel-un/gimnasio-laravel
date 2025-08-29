@@ -96,7 +96,7 @@
 							<option value="{{ $gimnasio['id'] }}">{{ $gimnasio['nombre'] }} - {{ $gimnasio['direccion'] }}</option>
 							@endforeach
 						</select>
-						<input type="hidden" name="plan" value="Comfort">
+						<input type="hidden" name="plan" value="comfort">
 						<button type="submit" class="btn btn-primary mt-3">ELIGE COMFORT</button>
 					</form>
 				</div>
@@ -119,7 +119,7 @@
 							<option value="{{ $gimnasio['id'] }}">{{ $gimnasio['nombre'] }} - {{ $gimnasio['direccion'] }}</option>
 							@endforeach
 						</select>
-						<input type="hidden" name="plan" value="Premium">
+						<input type="hidden" name="plan" value="premium">
 						<button type="submit" class="btn btn-warning mt-3">ELIGE PREMIUM</button>
 					</form>
 				</div>
@@ -142,7 +142,7 @@
 							<option value="{{ $gimnasio['id'] }}">{{ $gimnasio['nombre'] }} - {{ $gimnasio['direccion'] }}</option>
 							@endforeach
 						</select>
-						<input type="hidden" name="plan" value="Ultimate">
+						<input type="hidden" name="plan" value="ultimate">
 						<button type="submit" class="btn btn-success mt-3">ELIGE ULTIMATE</button>
 					</form>
 				</div>
