@@ -8,6 +8,8 @@
 **V.A.L GYM** is a **web application built with Laravel and PHP** that allows users to search gyms in their city, register, manage their profile, and book facilities.  
 The platform is designed to provide an intuitive and functional user experience.
 
+**First project created with PHP and Laravel using Blade and done with a partner**
+
 ---
 
 ## 🚀 Live Deployment
@@ -81,7 +83,6 @@ php artisan serve
 | Name | Role |
 |------|------|
 | [Israel Abad](https://github.com/Israelab01) | Developer |
-| [Nicolas Burgos](https://github.com/Blurry0507) | Developer |
 | [Samuel Utrilla](https://github.com/samuel-un) | Developer |
 
 ---
