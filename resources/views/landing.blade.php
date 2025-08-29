@@ -256,16 +256,6 @@
 							</a>
 							<span>Samuel Utrilla</span>
 						</div>
-
-						<div class="creator">
-							<a href="https://github.com/blurry0507" target="_blank">
-								<i class="fab fa-github"></i>
-							</a>
-							<a href="https://www.linkedin.com/in/nicolas-burgos-contreras-278b042b4" target="_blank">
-								<i class="fab fa-linkedin"></i>
-							</a>
-							<span>Nicolás Burgos</span>
-						</div>
 					</div>
 
 				</div>
