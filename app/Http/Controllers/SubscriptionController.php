@@ -104,6 +104,7 @@ class SubscriptionController extends Controller
             return back()->with('error', 'No se pudo guardar la suscripción. '.$e->getMessage());
         }
 
-        return back()->with('success', '¡Suscripción guardada! Has elegido el plan '.ucfirst($plan).'.');
+        return redirect()->route('user-management.index')
+                        ->with('success', '¡Suscripción guardada! Has elegido el plan '.ucfirst($plan).'.');
     }
 }

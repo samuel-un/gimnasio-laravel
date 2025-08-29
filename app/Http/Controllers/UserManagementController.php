@@ -30,36 +30,38 @@ class UserManagementController extends Controller
         if ($user) {
             $perfil = Perfil::with('gimnasio')
                 ->where('id_usuario', $user->id)
+                ->where('estado_membresia', 'activa')
                 ->latest('fecha_inicio_membresia')
                 ->first();
         }
 
-        $actividades   = class_exists(Actividad::class)   ? Actividad::take(4)->get()   : collect();
-        $instalaciones = class_exists(Instalacion::class) ? Instalacion::take(4)->get() : collect();
+        $actividades   = ($perfil && class_exists(Actividad::class))   ? Actividad::take(4)->get()   : collect();
+        $instalaciones = ($perfil && class_exists(Instalacion::class)) ? Instalacion::take(4)->get() : collect();
 
         return view('user-management', compact('gimnasios', 'perfil', 'actividades', 'instalaciones', 'user'));
     }
 
     public function update(Request $request)
     {
-        $request->validate([
-            'nombre'    => ['required','string','max:255'],
-            'apellidos' => ['required','string','max:255'],
-            'email'     => ['required','email','max:255'],
-            'telefono'  => ['nullable','string','max:50'],
-        ]);
-
         $user = Auth::user();
         if (!$user) {
             return back()->with('error', 'Debes iniciar sesión.');
         }
 
-        $user->update([
-            'nombre'    => $request->nombre,
-            'apellidos' => $request->apellidos,
-            'email'     => $request->email,
-            'telefono'  => $request->telefono,
+        $request->validate([
+            'nombre'    => ['required','string','max:255'],
+            'apellidos' => ['required','string','max:255'],
+            'email'     => ['required','email','max:255','unique:usuarios,email,'.$user->id],
+            'password'  => ['nullable','string','min:8','confirmed'],
         ]);
+
+        $user->nombre    = $request->nombre;
+        $user->apellidos = $request->apellidos;
+        $user->email     = $request->email;
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->password);
+        }
+        $user->save();
 
         return back()->with('success_usuario', 'Perfil actualizado correctamente.');
     }
@@ -76,11 +78,11 @@ class UserManagementController extends Controller
         }
 
         if (class_exists(Inscripcion::class)) {
-            $existing = Inscripcion::where('id_usuario', $user->id)
+            $exists = Inscripcion::where('id_usuario', $user->id)
                 ->where('id_actividad', $request->id_actividad)
                 ->exists();
 
-            if ($existing) {
+            if ($exists) {
                 return back()->with('error_actividades', 'Ya estás inscrito en esta actividad.');
             }
 
