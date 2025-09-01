@@ -8,7 +8,7 @@
 **V.A.L GYM** is a **web application built with Laravel and PHP** that allows users to search gyms in their city, register, manage their profile, and book facilities.  
 The platform is designed to provide an intuitive and functional user experience.
 
-**First project created with PHP and Laravel using Blade and done with a partner**
+**First project created with PHP and Laravel using Blade and done with a partner. Designed for desktop version only**
 
 ---
 
