@@ -6,52 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Crear nueva cuenta</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-	<style>
-	body {
-		background: url('https://res.cloudinary.com/dqcaqvplr/image/upload/v1740396560/rdeprhfbimjhxbqg9xih.png') no-repeat center center fixed;
-		background-size: cover;
-		position: relative;
-	}
-
-	body::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.4);
-		z-index: -1;
-	}
-
-	header {
-		position: relative;
-	}
-
-	.logo {
-		position: absolute;
-		top: 10px;
-		left: 10px;
-		width: 70px;
-		height: 70px;
-	}
-
-	h1 {
-		font-family: monospace;
-		font-size: 2.5rem;
-		font-weight: bold;
-	}
-
-	.signup-container {
-		background-color: #FFC107;
-		padding: 2rem;
-		border-radius: 15px;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-		max-width: 360px;
-		width: 100%;
-	}
-	</style>
+	<link rel="stylesheet" href="{{ asset('css/register.css') }}">
 </head>
+
 
 <body class="min-vh-100 d-flex flex-column">
 	<header class="text-center py-3 bg-warning">

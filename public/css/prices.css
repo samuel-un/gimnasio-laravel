@@ -1,0 +1,106 @@
+body {
+    background-color: #121212;
+}
+
+.header {
+    background-color: rgb(53, 53, 53);
+    color: #ffc107;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+
+.header a,
+.header a:hover {
+    color: #ffc107;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header span {
+    color: #ffffff;
+}
+
+.logout-button {
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.brand-logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 70px;
+    height: 70px;
+}
+
+.banner {
+    background: url("https://res.cloudinary.com/dup51jxlj/image/upload/v1741737732/FondoAreaClientes_1_znjsxx.png")
+        no-repeat center center;
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.pricing-section {
+    background-color: #f8f8f8;
+    padding: 40px;
+    text-align: center;
+}
+
+.pricing-section p {
+    text-align: left;
+}
+
+.card {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    border: 1px solid #333;
+    padding: 1.25rem;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.card h4 {
+    color: #ffc107;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.card h3 {
+    font-weight: 700;
+}
+
+.card p {
+    margin-bottom: 0.25rem;
+}
+
+.btn-primary,
+.btn-warning,
+.btn-success {
+    background-color: #ffc107;
+    border: none;
+    color: #000000;
+}
+
+.btn-warning {
+    font-weight: 700;
+}
+
+.footer-text {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
