@@ -108,3 +108,30 @@ a:not(.text-yellow-400):hover {
 .bg-red-500 {
     background-color: #2e2e2e !important;
 }
+
+.swal2-custom-confirm {
+    background-color: #dc2626 !important;
+    color: #fff !important;
+    font-weight: 600;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.5rem !important;
+    margin-left: 0.5rem !important;
+    cursor: pointer;
+}
+.swal2-custom-confirm:hover {
+    background-color: #b91c1c !important;
+}
+
+.swal2-custom-cancel {
+    background-color: #facc15 !important;
+    color: #000 !important;
+    font-weight: 600;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.5rem !important;
+    margin-right: 0.5rem !important;
+    cursor: pointer;
+}
+.swal2-custom-cancel:hover {
+    background-color: #eab308 !important;
+}
+

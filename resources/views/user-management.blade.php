@@ -261,14 +261,14 @@
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	<script>
-	document.addEventListener('DOMContentLoaded', function () {
-		const form = document.getElementById('logout-form');
-		if (!form) return;
+		document.addEventListener('DOMContentLoaded', function () {
+			const form = document.getElementById('logout-form');
+			if (!form) return;
 
-		form.addEventListener('submit', function (e) {
-		e.preventDefault();
+			form.addEventListener('submit', function (e) {
+				e.preventDefault();
 
-		Swal.fire({
+				Swal.fire({
 			title: '¿Cerrar sesión?',
 			text: 'Se cerrará tu sesión actual.',
 			icon: 'question',
@@ -278,15 +278,15 @@
 			reverseButtons: true,
 			buttonsStyling: false,
 			customClass: {
-			popup: 'swal2-dark',
-			confirmButton: 'swal2-confirm',
-			cancelButton: 'swal2-cancel'
+				cancelButton: 'swal2-custom-cancel',
+				confirmButton: 'swal2-custom-confirm'
 			}
-		}).then((result) => {
-			if (result.isConfirmed) form.submit();
+		})
+		.then((result) => {
+					if (result.isConfirmed) form.submit();
+				});
+			});
 		});
-		});
-	});
 	</script>
 
 	@include('partials.swal')
