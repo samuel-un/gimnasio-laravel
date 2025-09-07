@@ -7,6 +7,9 @@
 	<title>Crear nueva cuenta</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="{{ asset('css/swal.css') }}">
+
 </head>
 
 
@@ -63,6 +66,10 @@
 	<script src="{{ asset('js/user-creator.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	@include('partials.swal')
+
 </body>
 
 </html>

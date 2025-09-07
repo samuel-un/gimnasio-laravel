@@ -7,6 +7,8 @@
 	<title>Planes y Precios - Gimnasio</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('css/prices.css') }}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="{{ asset('css/swal.css') }}">
 </head>
 
 <body>
@@ -101,7 +103,9 @@
 		* Para suscribirte a un plan debes tener una
 		<a href="/user-access">cuenta</a> primero.
 	</div>
-
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	@include('partials.swal')
 </body>
 
 </html>
