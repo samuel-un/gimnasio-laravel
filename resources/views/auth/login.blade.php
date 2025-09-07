@@ -112,7 +112,7 @@
 				Soy nuevo en Vas a llorar GYM.
 			</p>
 			<div class="text-center">
-				<a href="{{ route('user-creator') }}">Crear una cuenta</a>
+				<a href="{{ route('user.register.show') }}">Crear una cuenta</a>
 			</div>
 		</section>
 	</main>

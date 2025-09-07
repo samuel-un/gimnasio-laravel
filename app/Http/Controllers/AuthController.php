@@ -19,12 +19,13 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
-            return back()->with('success', '¡Inicio de sesión exitoso!');
-        } else {
-            return back()->withErrors([
-                'error' => 'Las credenciales no coinciden con nuestros registros.',
-            ])->withInput();
-        }
+		if (Auth::attempt($credentials, remember: true)) {
+			$request->session()->regenerate();
+			return redirect()->intended('/')->with('success', '¡Inicio de sesión exitoso!');
+		}
+
+		return back()->withErrors([
+			'error' => 'Las credenciales no coinciden con nuestros registros.',
+		])->withInput();
     }
 }

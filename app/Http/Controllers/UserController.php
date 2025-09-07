@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+
 
 class UserController extends Controller
 {
@@ -15,21 +17,24 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nombre' => 'required|string|max:100',
-            'apellidos' => 'required|string|max:100',
-            'email' => 'required|email|unique:usuarios,email',
-            'password' => 'required|string|min:8',
-            'telefono' => 'nullable|string|min:9|max:9',
-        ]);
+        'nombre'    => 'required|string|max:255',
+        'apellidos' => 'required|string|max:255',
+        'email'     => 'required|email:rfc,dns|unique:usuarios,email',
+        'password'  => 'required|string|min:8',
+        'telefono'  => 'nullable|string|min:9|max:9',
+    ]);
 
-        User::create([
-            'nombre' => $validated['nombre'],
-            'apellidos' => $validated['apellidos'],
-            'email' => $validated['email'],
-            'password' => bcrypt($validated['password']), 
-            'telefono' => $validated['telefono'] ?? null,
-        ]);
+        $user = User::create([
+        'nombre'    => $validated['nombre'],
+        'apellidos' => $validated['apellidos'],
+        'email'     => $validated['email'],
+        'password'  => $validated['password'],
+        'telefono'  => $validated['telefono'] ?? null,
+    ]);
 
-        return redirect()->route('user-creator')->with('success', '¡Cuenta creada exitosamente!');
-    }
+		Auth::login($user, remember: true);
+		$request->session()->regenerate();
+
+		return redirect()->intended('/')->with('success', '¡Cuenta creada e inicio de sesión correcto!');
+	}
 }

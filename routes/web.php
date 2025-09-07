@@ -11,11 +11,13 @@ Route::get('/', function () {
     return view('landing');
 })->name('home');
 
-Route::get('/user-creator', [UserController::class, 'create'])->name('user-creator');
-Route::post('/user-creator', [UserController::class, 'store'])->name('user-creator.store');
+Route::middleware('guest')->group(function () {
+    Route::get('/user-creator', [UserController::class, 'create'])->name('user.register.show');
+    Route::post('/user-creator', [UserController::class, 'store'])->name('user.register.store');
 
-Route::get('/user-access', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
-Route::post('/user-access', [AuthController::class, 'login'])->name('login.post');
+	Route::get('/user-access', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
+	Route::post('/user-access', [AuthController::class, 'login'])->name('login.post');
+});
 
 Route::post('/logout', function () {
     Auth::logout();

@@ -80,7 +80,7 @@
 			</div>
 			@endif
 
-			<form action="{{ route('user-creator') }}" method="POST" class="d-grid gap-4">
+			<form action="{{ route('user.register.store') }}" method="POST" class="d-grid gap-4">
 				@csrf
 
 				<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required
