@@ -471,7 +471,6 @@ footer {
 .created-by {
     font-size: clamp(14px, 2.2vw, 20px);
     color: #000;
-    margin-right: clamp(12px, 2vw, 24px);
 }
 .creators {
     display: inline-flex;

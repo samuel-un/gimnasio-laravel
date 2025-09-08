@@ -197,18 +197,7 @@
 		<div class="bottom-bar">
 			<div class="footer-container">
 				<span class="created-by"><b>CREADO POR</b></span>
-
 				<div class="creators">
-					<div class="creator">
-						<a href="https://github.com/Israelab01" target="_blank">
-							<i class="fab fa-github"></i>
-						</a>
-						<a href="https://linkedin.com/in/israel-abad-barrera" target="_blank">
-							<i class="fab fa-linkedin"></i>
-						</a>
-						<span>Israel Abad</span>
-					</div>
-
 					<div class="creator">
 						<a href="https://github.com/samuel-un" target="_blank">
 							<i class="fab fa-github"></i>
