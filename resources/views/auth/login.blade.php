@@ -52,11 +52,12 @@
 				<button type="submit" class="btn btn-dark">Iniciar sesión</button>
 			</form>
 
-			<p class="mt-3 mb-1 text-center create-account">
-				Soy nuevo en Vas a llorar GYM.
-			</p>
+
 			<div class="text-center">
-				<a href="{{ route('user.register.show') }}">Crear una cuenta</a>
+				<p>
+					¿No tienes una cuenta?
+				</p>
+				<p><a href="{{ route('user.register.show') }}">Crear cuenta</a></p>
 			</div>
 		</section>
 	</main>
