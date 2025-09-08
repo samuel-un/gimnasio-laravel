@@ -14,13 +14,12 @@
 <body>
 	<header class="text-center py-3 bg-warning">
 		<a href="/">
-			<img src="https://res.cloudinary.com/dqcaqvplr/image/upload/v1740052973/xzz7r6cldz70lzphtg5p.png" alt="Logo"
-				class="logo" style="position: absolute; top: 10px; left: 10px; width: 70px; height: 70px;"></a>
+			<img src="https://res.cloudinary.com/dqcaqvplr/image/upload/v1740052973/xzz7r6cldz70lzphtg5p.png" alt="Logo" class="logo"></a>
 		<h1>SELECCIONA TU ABONO</h1>
 	</header>
 
 	<div class="banner">
-		Elige el plan que se adapta a ti y empieza hoy mismo.
+		<p>Elige el plan que se adapta a ti y empieza hoy mismo.</p>
 	</div>
 
 	<div class="pricing-section">
@@ -100,8 +99,8 @@
 	</div>
 
 	<div class="footer-text">
-		* Para suscribirte a un plan debes tener una
-		<a href="/user-access">cuenta</a> primero.
+		* Para suscribirte a un plan debes
+		<a href="/user-access">Iniciar Sesión</a> primero.
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
