@@ -22,7 +22,7 @@
 				<ul class="nav-menu">
 					<li><a href="/price-view">PRECIOS</a></li>
 					<li><a href="#por-que-elegir">CONÓCENOS</a></li>
-					<li><a href="#busca-club">BUSCA TU CLUB</a></li>
+					<li><a href="#buscador">BUSCA TU CLUB</a></li>
 				</ul>
 				@auth
 				<a href="/user-management" class="client-access">
