@@ -1,63 +1,112 @@
-
 <p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741737236/Logo_Letras_solo_3_yiwriy.png" alt="GymWeb Logo">
+  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741737236/Logo_Letras_solo_3_yiwriy.png" alt="V.A.L GYM Logo" width="280">
 </p>
 
-# 💪 V.A.L GYM - Web Platform for Gyms 🏋️
+# 💪 V.A.L GYM — Web Platform for Gyms
 
-**V.A.L GYM** is a **web application built with Laravel and PHP** that allows users to search gyms in their city, register, manage their profile, and book facilities.  
-The platform is designed to provide an intuitive and functional user experience.
+> **Status:** Active · **Owner:** [Samuel Utrilla](https://github.com/samuel-un) · **Stack:** Laravel (PHP), MySQL, Blade, Bootstrap, SweetAlert2
 
-**First project created with PHP and Laravel using Blade and done with a partner. Designed for desktop version only**
-
----
-
-## 🚀 Live Deployment
-
-- **Backend (Railway):** [https://gimnasio-laravel-production.up.railway.app/](https://gimnasio-laravel-production.up.railway.app/)  
-
-✅ The project is currently **finished and in production**.
+**Summary:** Web application to **search gyms**, **sign up / sign in**, **manage profile**, **subscribe** to membership plans, and **book** resources/time slots.  
+The project **started as a backend‑only academic work (Laravel)** built together with my teammate **[Israel Abad](https://github.com/Israelab01)**.  
+**Today the development and maintenance is 100% solo**. I have **added Blade + CSS frontend**, improved UI/UX and user flows, and deployed it to Railway.
 
 ---
 
-## 📌 Features
-
-- 🔍 **Search gyms** in the selected city.  
-- 📝 **User registration and login**.  
-- 🎿 **Subscriptions to gyms** through different membership plans.  
-- 🏠 **Profile management**, allowing users to edit personal information.  
-- 📅 **Booking system** and schedule visualization.  
-- 📣 **API integration** to manage and display gym data.  
-- 📍 **Map integration** to show gym locations.  
-- 📦 **Price view connected to API**, allowing subscriptions to gyms directly.  
-- 📓 **Database migrations** and **seeders** included.  
-- 🏗 **Laravel MVC architecture**: routes, models, controllers, and views.  
+## 🚀 Live Demo
+- **Railway (Backend + App):** https://gimnasio-laravel-production.up.railway.app/
 
 ---
 
-## ⚙️ Tech Stack
-
-- **Backend**: Laravel, PHP  
-- **Database**: MySQL  
-- **Frontend**: Blade (Laravel templates), Bootstrap  
-- **API**: Gym management & visualization API  
+## 🧭 Table of Contents
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Architecture & Modules](#-architecture--modules)
+- [Installation & Setup](#-installation--setup)
+- [Environment Variables](#-environment-variables)
+- [Screenshots](#-screenshots)
+- [UI Integrations (SweetAlert2)](#-ui-integrations-sweetalert2-example)
+- [Roadmap](#-roadmap)
+- [History & Credits](#-history--credits)
+- [License](#-license)
 
 ---
 
-## 🔧 Installation
+## ✨ Features
+- 🔍 **Gym search** by city with a **filterable list**.
+- 👤 **Registration / Login** and editable **user profile**.
+- 💳 **Subscriptions / plans** with price views.
+- 📅 **Booking & schedules** (basic availability management).
+- 🗺️ **Map** to locate gyms (frontend‑embedded integration).
+- 🧱 **CRUD** for core entities (users, gyms, plans, etc.).
+- 🧭 **Navigation & feedback** using **SweetAlert2** (confirmations, success/error).
+- 🧰 **Migrations** and **seeders** included.
+- 🧭 **Laravel MVC**: routes, controllers, models, and **Blade** views.
 
+---
+
+## 🛠 Tech Stack
+**Backend:** Laravel · PHP  
+**Database:** MySQL  
+**Frontend:** Blade (Laravel), **Bootstrap**, **SweetAlert2** (modals/toasts)  
+**Deployment:** Railway
+
+> *SweetAlert2* is used for **delete confirmations**, **success/error messages**, and form alerts, improving UX (e.g., confirm before deleting a resource).
+
+---
+
+## 🧩 Architecture & Modules
+- **Users & Authentication:** sign‑up/login, password recovery (*Laravel session‑based auth*).
+- **Gyms:** listing, detail, map location.
+- **Plans / Subscriptions:** plan catalog and user enrollment.
+- **Bookings:** select available resource/time slot (basic level).
+- **Administration:** pages for CRUD of key entities (role‑based).
+
+> **Basic roles** (e.g., *admin* / *user*) separate administrative views and actions.
+
+---
+
+## ⚙️ Installation & Setup
+
+### Requirements
+- PHP 8.x, Composer
+- MySQL 8.x (or compatible)
+- Standard Laravel PHP extensions enabled
+
+### Steps (local environment)
 ```bash
-# Clone repository
+# 1) Clone
 git clone https://github.com/samuel-un/gimnasio-laravel.git
+cd gimnasio-laravel
 
-# Enter project folder
-cd C:/xampp/htdocs/laravel/gimnasio-laravel
-
-# Install dependencies
+# 2) Dependencies
 composer install
 
-# Configure .env file with database info
+# 3) Environment variables
 cp .env.example .env
+# Edit DB_* with your local credentials
+
+# 4) App key
+php artisan key:generate
+
+# 5) Migrations + Seeders
+php artisan migrate --seed
+
+# 6) Run server
+php artisan serve
+```
+
+> **Optional (Docker/Sail):** if you use Laravel Sail, you can spin up MySQL/PHP with Docker using `./vendor/bin/sail up -d`, and run the same commands prefixed with `sail`.
+
+---
+
+## 🔐 Environment Variables
+Minimum for local development:
+```dotenv
+APP_NAME="V.A.L GYM"
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -65,82 +114,103 @@ DB_PORT=3306
 DB_DATABASE=gimnasio
 DB_USERNAME=root
 DB_PASSWORD=
-
-# Generate application key
-php artisan key:generate
-
-# Run migrations and seeders
-php artisan migrate --seed
-
-# Start local server
-php artisan serve
 ```
+> For production on **Railway**, also set `APP_URL` and the **managed MySQL** variables provided by the platform.
 
 ---
 
-## 👥 Project Members
+## 📸 Screenshots
 
-| Name | Role |
-|------|------|
-| [Israel Abad](https://github.com/Israelab01) | Developer |
-| [Samuel Utrilla](https://github.com/samuel-un) | Developer |
-
----
-
-<h1>📸 Capturas</h1>
-
-## Landing Page
-
+### Landing Page
 <p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093706_rqu8c2.png" width="850">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093738_u5xmvp.png" width="850">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093748_l954ba.png" width="850">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093810_nd726v.png" width="850">
-  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1756487741/Footer_VAL_Gym.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358337/Landing1_by1kkv.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358321/Landing2_k3e0gk.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358321/Landing3_vpslbl.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358321/Landing4_lvhtxo.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358321/Landing5_olmzdq.png" width="850">
 </p>
 
 ## Price View
 
 <p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855279/Captura_de_pantalla_2025-03-13_094035_k526bq.png" width="850">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855279/Captura_de_pantalla_2025-03-13_094044_uyiagh.png" width="850">
-</p>
-
-## User Creator
-
-<p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855279/Captura_de_pantalla_2025-03-13_093839_ug3ndt.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358543/Price1_jfhn47.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358548/Price2_ceixob.png" width="850">
 </p>
 
 ## User Access
 
 <p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741855278/Captura_de_pantalla_2025-03-13_093830_lu4aim.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358654/User-Access_ahmy3k.png" width="850">
+</p>
+
+## User Creator
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358655/User-Creator_ozy8vj.png" width="850">
 </p>
 
 ## User Management
 
 <p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860595/Captura_de_pantalla_2025-03-13_110909_ayt4fx.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358843/User-Management_bfawpe.png" width="850">
 </p>
 <p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110917_tsidpg.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358843/User-Management2_d0skc1.png" width="850">
 </p>
 <p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110924_gtbkr7.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358844/User-Management3_ii4zb4.png" width="850">
 </p>
 <p align="center">
-  <img src="https://res.cloudinary.com/dup51jxlj/image/upload/v1741860596/Captura_de_pantalla_2025-03-13_110939_vjzgc5.png" width="850">
+  <img src="https://res.cloudinary.com/dgbngcvkl/image/upload/v1757358843/User-Management4_qtyuwa.png" width="850">
 </p>
 
 ---
 
-## 📊 Methodology
-
-This project was developed using **SCRUM** methodology and **Pair Programming** to ensure collaboration and agile development.
+## 🗺️ UI Integrations (SweetAlert2 example)
+```html
+<!-- CDN example -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+```
+```js
+// Delete confirmation
+document.querySelectorAll('.btn-delete').forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+	e.preventDefault();
+	const form = btn.closest('form');
+	Swal.fire({
+	  title: 'Delete this item?',
+	  text: 'This action cannot be undone.',
+	  icon: 'warning',
+	  showCancelButton: true,
+	  confirmButtonText: 'Yes, delete',
+	  cancelButtonText: 'Cancel'
+	}).then((result) => {
+	  if (result.isConfirmed) form.submit();
+	});
+  });
+});
+```
+> **Toasts** are also used for action feedback (create/edit/delete).
 
 ---
 
-## 📋 License
+## 🗺️ Roadmap
+- [x] Base migrations/seeders
+- [x] Gym search/filtering
+- [x] Subscriptions and price view
+- [x] SweetAlert2 alerts integration
+- [x] Responsive improvements (mobile/tablet)
+- [ ] Feature tests (HTTP) and additional validations
+- [ ] Basic CI/CD with GitHub Actions
+- [ ] Caching for frequent queries
 
+---
+
+## 🧾 History & Credits
+- **Initial phase (academic):** backend with **Laravel** and minimal frontend with Blade, developed together with **[Israel Abad](https://github.com/Israelab01)**.
+- **Current phase (solo):** enhanced **Blade + CSS**, **UI improvements**, **SweetAlert2 feedback**, and architecture/UX tweaks.
+
+---
+
+## 📄 License
 This project is licensed under the **MIT License**.
