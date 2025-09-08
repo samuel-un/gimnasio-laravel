@@ -26,24 +26,79 @@
 			<h2 class="text-lg font-bold mb-5 text-white">PANEL DE GESTIONES</h2>
 			<nav>
 				<ul class="space-y-3">
+					@if(isset($perfil) && in_array(strtolower($perfil->plan_membresia ?? ''), ['ultimate','premium']))
 					<li class="text-yellow-400 font-semibold">Reservar instalaciones</li>
-					<li class="pl-3"><a href="#" class="hover:text-yellow-300">Piscina</a></li>
-					<li class="pl-3"><a href="#" class="hover:text-yellow-300">Sauna</a></li>
-					<li class="pl-3"><a href="#" class="hover:text-yellow-300">Sala de yoga/meditación</a></li>
+					<li class="pl-3"><a href="#instalaciones" class="hover:text-yellow-300">Piscina</a></li>
+					<li class="pl-3"><a href="#instalaciones" class="hover:text-yellow-300">Sauna</a></li>
+					<li class="pl-3"><a href="#instalaciones" class="hover:text-yellow-300">Pista de Padel</a></li>
+					<li class="pl-3"><a href="#instalaciones" class="hover:text-yellow-300">Pista de Baloncesto</a></li>
+					@endif
+					@if(isset($perfil) && in_array(strtolower($perfil->plan_membresia ?? ''), ['comfort','ultimate','premium']))
 					<li class="text-yellow-400 font-semibold mt-4">Actividades grupales</li>
-					<li class="pl-3"><a href="#" class="hover:text-yellow-300">Zumba</a></li>
-					<li class="pl-3"><a href="#" class="hover:text-yellow-300">Body Combat</a></li>
-					<li class="pl-3"><a href="#" class="hover:text-yellow-300">Pilates</a></li>
+					<li class="pl-3"><a href="#actividades" class="hover:text-yellow-300">Zumba</a></li>
+					<li class="pl-3"><a href="#actividades" class="hover:text-yellow-300">Pilates</a></li>
+					<li class="pl-3"><a href="#actividades" class="hover:text-yellow-300">Deportes de contacto</a></li>
+					<li class="pl-3"><a href="#actividades" class="hover:text-yellow-300">Circuitos de entrenamiento personal</a></li>
+					@endif
 					<li class="text-yellow-400 font-semibold mt-4">Gestión de usuario</li>
-					<li class="pl-3"><a href="#" class="hover:text-yellow-300">Correo electrónico</a></li>
-					<li class="pl-3"><a href="#" class="hover:text-yellow-300">Contraseña</a></li>
-					<li class="pl-3"><a href="#" class="hover:text-yellow-300">Información personal</a></li>
+					<li class="pl-3"><a href="#gestion-usuario" class="hover:text-yellow-300">Nombre</a></li>
+					<li class="pl-3"><a href="#gestion-usuario" class="hover:text-yellow-300">Apellidos</a></li>
+					<li class="pl-3"><a href="#gestion-usuario" class="hover:text-yellow-300">Correo electrónico</a></li>
+					<li class="pl-3"><a href="#gestion-usuario" class="hover:text-yellow-300">Nueva contraseña</a></li>
+					<li class="pl-3"><a href="#gestion-usuario" class="hover:text-yellow-300">Confirmar nueva contraseña</a></li>
 				</ul>
 			</nav>
 		</aside>
 
 		<main class="w-3/4 p-10">
-			{{-- Bloque de membresía --}}
+			
+			@php
+			$__planNombre = isset($perfil) && $perfil ? strtolower($perfil->plan_membresia ?? '') : null;
+			@endphp
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					const plan = @json($__planNombre);
+					if (!plan) {
+						Swal.fire({
+							icon: 'warning',
+							title: '<b>Sin suscripción activa</b>',
+							html: 'No tienes una suscripción activa.<br>No tienes acceso a las funciones de los gimnasios <b>V.A.L GYM</b>.',
+							showCancelButton: true,
+							confirmButtonText: 'Suscribirse',
+							cancelButtonText: 'Aceptar',
+							reverseButtons: true,
+							customClass: {
+								confirmButton: 'swal2-custom-confirm',
+								cancelButton: 'swal2-custom-cancel'
+							}
+						}).then((result) => {
+							if (result.isConfirmed) {
+								window.location.href = 'http://127.0.0.1:8000/price-view';
+							}
+						});
+					} else if (plan === 'comfort') {
+						Swal.fire({
+							icon: 'info',
+							title: 'Perfil Comfort',
+							html: 'Acceso <b>solo</b> a <b>Actividades grupales</b>.<br>“Reservar Instalaciones” no está disponible en tu plan.',
+							showCancelButton: true,
+							confirmButtonText: 'Suscribirse',
+							cancelButtonText: 'Aceptar',
+							reverseButtons: true,
+							customClass: {
+								confirmButton: 'swal2-custom-confirm',
+								cancelButton: 'swal2-custom-cancel'
+							}
+						}).then((result) => {
+							if (result.isConfirmed) {
+								window.location.href = 'http://127.0.0.1:8000/price-view';
+							}
+						});
+					}
+				});
+			</script>
+
+			
 			@if(isset($perfil) && $perfil)
 			<section class="p-5 rounded-lg mb-5">
 				<h2 class="text-xl font-bold mb-3 text-white">Tu membresía</h2>
@@ -53,7 +108,7 @@
 			</section>
 			@endif
 
-			{{-- Selección de gimnasio --}}
+			
 			<section class="p-5 rounded-lg">
 				<h2 class="text-xl font-bold mb-3 text-white">Selecciona un gimnasio:</h2>
 				<div>
@@ -81,7 +136,8 @@
 				</p>
 			</section>
 
-			{{-- Reservas --}}
+			
+			@if(isset($perfil) && in_array(strtolower($perfil->plan_membresia ?? ''), ['ultimate','premium']))
 			<section class="p-5 rounded-lg mt-5">
 				<h2 class="text-xl font-bold mb-3 text-white">Reservar Instalaciones</h2>
 				<div id="instalaciones">
@@ -132,8 +188,10 @@
 					@endif
 				</div>
 			</section>
+			@endif
 
-			{{-- Actividades --}}
+			
+			@if(isset($perfil) && in_array(strtolower($perfil->plan_membresia ?? ''), ['comfort','ultimate','premium']))
 			<section class="p-5 rounded-lg mt-5">
 				<h2 class="text-xl font-bold mb-3 text-white">Actividades Grupales</h2>
 				<div id="actividades">
@@ -172,9 +230,10 @@
 					@endif
 				</div>
 			</section>
-
-			{{-- Gestión de usuario --}}
-			<section class="p-5 rounded-lg mt-5">
+			@endif
+			
+			
+			<section class="p-5 rounded-lg mt-5" id="gestion-usuario">
 				<h2 class="text-xl font-bold mb-3 text-white">Gestión de Usuario</h2>
 				<form method="POST" action="{{ route('user-management.update') }}" class="space-y-4">
 					@csrf
@@ -234,61 +293,62 @@
 		}
 	</script>
 
-	{{-- Preseleccionar gimnasio del perfil --}}
-@if (isset($perfil) && $perfil)
-    @php
-        $targetGym = optional($perfil->gimnasio)->nombre; // <-- PHP fuera del <script>
-    @endphp
-    @if ($targetGym)
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const sel = document.getElementById('gimnasios');
-                if (!sel) return;
+	
+	@if (isset($perfil) && $perfil)
+	@php
+	$targetGym = optional($perfil->gimnasio)->nombre; // <-- PHP fuera del <script>
+		@endphp
+		@if ($targetGym)
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const sel = document.getElementById('gimnasios');
+				if (!sel) return;
 
-                const target = @json($targetGym);
-                for (let i = 0; i < sel.options.length; i++) {
-                    if (sel.options[i].value === target) {
-                        sel.selectedIndex = i;
-                        break;
-                    }
-                }
-                actualizarGimnasio();
-            });
-        </script>
-    @endif
-@endif
+				const target = @json($targetGym);
+				for (let i = 0; i < sel.options.length; i++) {
+					if (sel.options[i].value === target) {
+						sel.selectedIndex = i;
+						break;
+					}
+				}
+				actualizarGimnasio();
+			});
+		</script>
+		@endif
+		@endif
 
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			const form = document.getElementById('logout-form');
-			if (!form) return;
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const form = document.getElementById('logout-form');
+				if (!form) return;
 
-			form.addEventListener('submit', function (e) {
-				e.preventDefault();
+				form.addEventListener('submit', function(e) {
+					e.preventDefault();
 
-				Swal.fire({
-			title: '¿Cerrar sesión?',
-			text: 'Se cerrará tu sesión actual.',
-			icon: 'question',
-			showCancelButton: true,
-			confirmButtonText: 'Sí, cerrar',
-			cancelButtonText: 'Cancelar',
-			reverseButtons: true,
-			buttonsStyling: false,
-			customClass: {
-				cancelButton: 'swal2-custom-cancel',
-				confirmButton: 'swal2-custom-confirm'
-			}
-		})
-		.then((result) => {
-					if (result.isConfirmed) form.submit();
+					Swal.fire({
+							title: '¿Cerrar sesión?',
+							text: 'Se cerrará tu sesión actual.',
+							icon: 'question',
+							showCancelButton: true,
+							confirmButtonText: 'Sí, cerrar',
+							cancelButtonText: 'Cancelar',
+							reverseButtons: true,
+							buttonsStyling: false,
+							customClass: {
+								cancelButton: 'swal2-custom-cancel',
+								confirmButton: 'swal2-custom-confirm'
+							}
+						})
+						.then((result) => {
+							if (result.isConfirmed) form.submit();
+						});
 				});
 			});
-		});
-	</script>
+		</script>
 
-	@include('partials.swal')
+		@include('partials.swal')
 </body>
+
 </html>
